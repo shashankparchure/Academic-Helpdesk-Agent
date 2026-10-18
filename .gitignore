@@ -13,6 +13,10 @@ venv/
 env/
 as_env/
 
+# ADK local sessions and artifacts
+**/.adk/
+*.sqlite3
+
 # Local configuration and credentials
 .env
 .env.*

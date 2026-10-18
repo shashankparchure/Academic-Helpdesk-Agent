@@ -66,6 +66,59 @@ def lookup_course(course_code_or_name: str) -> str:
     return "\n".join(output)
 
 
+def count_course_offerings(department_sheet: str, course_level_digit: str) -> str:
+    """Count distinct courses at a level in an exact department sheet and expose category/scope evidence.
+
+    The normalized workbook may not identify whether every course is an elective or which term it
+    applies to. Return those limitations with the count instead of silently treating all courses as
+    electives or as belonging to the current semester.
+    """
+    department = re.sub(r"\s+", " ", department_sheet).strip().casefold()
+    level = str(course_level_digit).strip()
+    if not department or not re.fullmatch(r"[1-9]", level):
+        return "INVALID_FILTER: Provide an exact department sheet name and one course-level digit."
+
+    rows = _read_csv(OFFERINGS)
+    sheets = sorted({row.get("department_sheet", "").strip() for row in rows if row.get("department_sheet", "").strip()})
+    selected = [
+        row for row in rows
+        if row.get("department_sheet", "").strip().casefold() == department
+        and row.get("course_level_digit", "").strip() == level
+    ]
+    if not selected:
+        return (
+            f"NO_MATCH: No normalized courses found for department sheet {department_sheet!r} at level {level}. "
+            f"Available department sheets: {', '.join(sheets)}. Do not map a department name to a sheet without evidence."
+        )
+
+    by_code: dict[str, dict[str, str]] = {}
+    for row in selected:
+        by_code.setdefault(_code(row.get("course_code", "")), row)
+    courses = list(by_code.values())
+    explicitly_labeled_electives = [
+        row for row in courses
+        if "elective" in f"{row.get('category', '')} {row.get('remarks', '')}".casefold()
+    ]
+    all_classified = all(row.get("category", "").strip() or row.get("remarks", "").strip() for row in courses)
+    details = []
+    for row in courses:
+        details.append(
+            f"{row.get('course_code')} | {row.get('course_name')} | category: {row.get('category') or 'not recorded'}"
+            f" | source: {row.get('source_file')}#{row.get('source_sheet')} rows {row.get('source_rows') or row.get('source_row')}"
+            f" | citation ID: {_citation_id(row.get('source_file', ''))}"
+        )
+    scope_note = (
+        "Category/remarks are populated for all returned courses; only explicitly labeled electives are classified as electives."
+        if all_classified else
+        "The source does not classify every returned course as an elective; do not report the total course count as an elective count."
+    )
+    return (
+        f"Distinct level-{level} courses in department sheet {department_sheet!r}: {len(courses)}. "
+        f"Explicitly labeled elective courses: {len(explicitly_labeled_electives)}. "
+        f"Term applicability is not encoded in this normalized table. {scope_note}\n" + "\n".join(details)
+    )
+
+
 def lookup_course_schedule(course_code: str) -> str:
     """Look up an exact course code, its classroom allocation, and weekday/time for its slot."""
     query = _code(course_code)

@@ -2,7 +2,7 @@
 
 A local academic helpdesk prototype for IIT Jodhpur. It uses Google ADK, an Ollama-hosted language model, ChromaDB, and source documents prepared by the user to answer academic questions with citations, look up timetable/course data, find verified instructor contacts, and draft (but never send) emails.
 
-This repository currently contains a **single-agent baseline**. The assignment's specialist-agent version, evaluation prompt set, and findings report are future work.
+This repository contains both a **single-agent baseline** and a separate **multi-agent version** for comparison. The evaluation prompt set and findings report are still future work.
 
 ## Current capabilities
 
@@ -13,6 +13,7 @@ This repository currently contains a **single-agent baseline**. The assignment's
 - Run an ADK helpdesk agent using the local Qwen model.
 - Look up course information, schedules, and verified faculty email addresses; draft email text without sending it.
 - Log questions that cannot be answered from the available evidence for human follow-up.
+- Route requests in the multi-agent version to policy, schedule, and email specialists.
 
 Answers depend on the documents and structured data you provide. Review source dates, applicability, and contact details before relying on them.
 
@@ -71,22 +72,45 @@ adk web --port 8000
 
 Keep the server terminal open and visit <http://localhost:8000>. Select `academic_helpdesk` in the ADK interface. If you open a new terminal, activate the environment and set `OLLAMA_API_BASE` again before launching ADK.
 
+## Compare the single-agent and multi-agent versions
+
+Start each server in a separate activated Command Prompt. Both use the same vector index and Ollama models, but each has its own ADK app/session directory.
+
+Single-agent baseline (port 8000):
+
+```bat
+cd src
+set OLLAMA_API_BASE=http://localhost:11434
+adk web --port 8000 academic_helpdesk
+```
+
+Multi-agent version (port 8001, in a second terminal):
+
+```bat
+cd src
+set OLLAMA_API_BASE=http://localhost:11434
+adk web --port 8001 academic_helpdesk_multi
+```
+
+Open <http://localhost:8000> for the single-agent baseline and <http://localhost:8001> for the multi-agent version. Keep both server terminals open. ADK's web command accepts an agent directory and a configurable port; these commands point each server at one app so the comparisons remain separate.
+
 ## Project layout
 
 ```text
 Academic-Helpdesk-Agent/
-├── assignment_description.txt
-├── data/                         # Local input and generated data; ignored by Git
-|   +-- raw/                      # User-provided source documents
-|   +-- processed/                # Extracted and normalized files
-|   +-- metadata/                 # Inventories and source register
-|   +-- vector_store/chroma/      # Persistent local Chroma index
-|   +-- logs/                     # Unanswered question log
-+-- docs/                         # Project documentation
-+-- eval/                         # Evaluation prompts and results (planned)
-+-- reports/                      # Assignment findings report (planned)
-+-- scripts/                      # Data processing and indexing scripts
-+-- src/academic_helpdesk/        # ADK agent, retrieval, settings, and tools
+|-- assignment_description.txt
+|-- data/                         # Local input and generated data; ignored by Git
+|   |-- raw/                      # User-provided source documents
+|   |-- processed/                # Extracted and normalized files
+|   |-- metadata/                 # Inventories and source register
+|   |-- vector_store/chroma/      # Persistent local Chroma index
+|   |-- logs/                     # Unanswered question log
+|-- docs/                         # Project documentation
+|-- eval/                         # Evaluation prompts and results (planned)
+|-- reports/                      # Assignment findings report (planned)
+|-- scripts/                      # Data processing and indexing scripts
+|-- src/academic_helpdesk/        # Single-agent baseline and shared tools
+|-- src/academic_helpdesk_multi/  # Orchestrator and specialist agents
 ```
 
 ## Privacy and repository contents
@@ -95,4 +119,4 @@ The `.gitignore` excludes local raw/processed documents, generated metadata, vec
 
 ## Assignment status
 
-The current code is the single-agent RAG/tool baseline. The assignment also asks for a multi-agent version, a set of 20 to 30 evaluation prompts, and a report covering accuracy, citation groundedness, out-of-scope refusals, and changes across repeated runs. Those deliverables should be added after implementation and evaluation.
+The single-agent baseline and multi-agent implementation are present. The assignment also asks for a set of 20 to 30 evaluation prompts and a report covering accuracy, citation groundedness, out-of-scope refusals, and changes across repeated runs. Those deliverables should be added after implementation and evaluation. See [`docs/rag_pipeline_analysis.md`](docs/rag_pipeline_analysis.md) for retrieval alternatives and the current robustness plan.

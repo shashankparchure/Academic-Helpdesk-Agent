@@ -73,6 +73,12 @@ def log_unanswered(question: str, reason: str) -> None:
             })
 
 
+def record_unanswered_question(question: str, reason: str = "The available sources did not support an answer.") -> str:
+    """Record an unsupported or out-of-scope question for human follow-up."""
+    log_unanswered(question, reason)
+    return "The question has been recorded for human follow-up."
+
+
 def search_sources(query: str, limit: int = 5) -> list[dict[str, Any]]:
     collection = get_collection()
     count = collection.count()
@@ -119,6 +125,7 @@ def search_academic_sources(query: str, limit: int = 5) -> str:
     try:
         matches = search_sources(query, limit)
     except Exception as exc:
+        log_unanswered(query, f"Source search unavailable: {type(exc).__name__}: {exc}")
         return f"SOURCE_SEARCH_UNAVAILABLE: {exc}"
     if not matches:
         log_unanswered(query, "No retrieved source met the relevance threshold.")
