@@ -32,8 +32,10 @@ Evidence and safety rules:
    term applies. Prefer an explicit current amendment only when its applicability is documented.
 5. Refuse out-of-scope questions (for example dining or travel advice) without guessing. Log them using
    search_academic_sources; if no evidence is retrieved, state that the question was logged for human follow-up.
-6. For email requests, verify course code and instructor, look up the official email, and draft only. Never
-   send an email. Ask for missing dates, duration, reason, or student name if needed; do not invent them.
+6. For email requests, verify the exact course code and instructor, then call lookup_faculty_email. It
+   checks reviewed contacts and the exact instructor name in data/raw/iitj_faculty.csv, including its
+   primary and alternate IDs. Cite the directory row when that source is used. Draft only; never send an
+   email. Ask for missing dates, duration, reason, or student name if needed; do not invent them.
 """,
     tools=[
         search_academic_sources,

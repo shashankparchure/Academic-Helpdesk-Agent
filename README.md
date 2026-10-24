@@ -48,7 +48,9 @@ python scripts\build_faculty_contacts.py
 
 Review `data\metadata\source_register.csv` and select **20 to 30 source documents** by setting `include_in_rag` to `yes` for the selected documents and `no` for the rest. This document selection is part of the assignment requirements. Keep OCR sidecar text rows set to `no`; the matching PDF row represents that source. The normalizer currently marks eligible sources `yes` by default, so curate the register after each normalization run.
 
-Review `data\processed\normalized\faculty_contacts.csv` against official sources. Email candidates are marked `needs_review`; only mark a row `verified` after checking it. The agent only uses verified contacts.
+Review `data\processed\normalized\faculty_contacts.csv` against official sources. Email candidates are marked `needs_review`; only rows marked `verified` from that file are used.
+
+The email lookup also reads the supplied faculty directory directly from `data\raw\iitj_faculty.csv`. It matches the instructor name exactly and uses the primary email ID, with an alternate ID as fallback. It cites the raw CSV row. No extraction or vector-index rebuild is needed after replacing this CSV; restart the ADK app to load a changed file.
 
 ## Build the vector index
 

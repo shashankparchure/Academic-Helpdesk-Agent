@@ -7,14 +7,16 @@ import re
 from pathlib import Path
 
 from academic_helpdesk.rag.retrieval import log_unanswered
-from academic_helpdesk.settings import METADATA_ROOT, NORMALIZED_ROOT
+from academic_helpdesk.settings import DATA_ROOT, METADATA_ROOT, NORMALIZED_ROOT
 
 
 OFFERINGS = NORMALIZED_ROOT / "course_offerings.csv"
 ALLOCATIONS = NORMALIZED_ROOT / "classroom_allocation.csv"
 SLOT_TIMES = NORMALIZED_ROOT / "slot_times.csv"
 CONTACTS = NORMALIZED_ROOT / "faculty_contacts.csv"
+FACULTY_DIRECTORY = DATA_ROOT / "raw" / "iitj_faculty.csv"
 SOURCE_REGISTER = METADATA_ROOT / "source_register.csv"
+EMAIL_RE = re.compile(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}")
 
 
 def _read_csv(path: Path) -> list[dict[str, str]]:
@@ -26,6 +28,54 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
 
 def _code(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9]", "", value).upper()
+
+
+def _person_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(value or "").casefold())
+
+
+def _header_key(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", str(value or "").casefold())
+
+
+def _directory_value(row: dict[str, str], *aliases: str) -> str:
+    columns = {_header_key(key): value for key, value in row.items() if key}
+    for alias in aliases:
+        value = columns.get(_header_key(alias), "")
+        if value and value.strip():
+            return value.strip()
+    return ""
+
+
+def _faculty_directory_matches(instructor_name: str) -> list[dict[str, str]]:
+    if not FACULTY_DIRECTORY.is_file():
+        return []
+    query = _person_key(instructor_name)
+    if not query:
+        return []
+
+    matches: list[dict[str, str]] = []
+    with FACULTY_DIRECTORY.open(encoding="utf-8-sig", newline="") as stream:
+        for row_number, row in enumerate(csv.DictReader(stream), start=2):
+            name = _directory_value(row, "Faculty Name", "Name", "Faculty")
+            if _person_key(name) != query:
+                continue
+            primary_text = _directory_value(row, "Email ID", "Primary Email", "Email", "Email Address")
+            alternate_text = _directory_value(
+                row, "Other Email IDs", "Alternate Email IDs", "Alternate Email ID", "Alternate Email"
+            )
+            primary = next(iter(EMAIL_RE.findall(primary_text)), "")
+            alternates = list(dict.fromkeys(email for email in EMAIL_RE.findall(alternate_text) if email != primary))
+            matches.append({
+                "name": name,
+                "primary_email": primary,
+                "alternate_emails": "; ".join(alternates),
+                "designation": _directory_value(row, "Designation", "Position", "Title"),
+                "department": _directory_value(row, "Department", "School", "Unit"),
+                "source_path": "data/raw/iitj_faculty.csv",
+                "source_row": str(row_number),
+            })
+    return matches
 
 
 def _citation_id(source_file: str) -> str:
@@ -145,18 +195,67 @@ def lookup_course_schedule(course_code: str) -> str:
 
 
 def lookup_faculty_email(instructor_name: str) -> str:
-    """Look up an instructor's email in the reviewed faculty contacts CSV; never invent an address."""
-    query = re.sub(r"\s+", " ", instructor_name).strip().casefold()
+    """Look up an exact instructor contact in the reviewed contact file or raw IITJ directory.
+
+    The raw directory is read-only at runtime. Results cite its filename and row number so a student
+    can check the address against the supplied faculty listing.
+    """
+    query = _person_key(instructor_name)
     rows = _read_csv(CONTACTS)
     matches = [
         row for row in rows
-        if query
-        and query == row.get("name", "").strip().casefold()
+        if query and query == _person_key(row.get("name", ""))
         and row.get("verification_status", "").strip().casefold() == "verified"
     ]
-    if not matches:
-        return f"NO_VERIFIED_EMAIL: No exact contact match for {instructor_name!r}. Do not guess an email address."
-    return "\n".join(f"{r.get('name')} | {r.get('email')} | source: {r.get('source_path')}" for r in matches)
+    if matches:
+        emails = {row.get("email", "").strip().casefold() for row in matches if row.get("email", "").strip()}
+        if len(emails) > 1:
+            return f"AMBIGUOUS_CONTACT: Multiple verified email matches for {instructor_name!r}; ask which contact is intended. No email draft should be made."
+        row = matches[0]
+        return (
+            f"CONTACT_FOUND | {row.get('name')} | email for contact: {row.get('email')}"
+            f" | source: {row.get('source_path')} row {row.get('source_row', '')}"
+            f" | citation ID: {row.get('citation_id', '')}"
+        )
+
+    directory_matches = _faculty_directory_matches(instructor_name)
+    if not directory_matches:
+        return (
+            f"NO_VERIFIED_EMAIL: No exact contact match for {instructor_name!r} in the reviewed contacts "
+            "or data/raw/iitj_faculty.csv. Do not guess an email address."
+        )
+    unique = {
+        (row["primary_email"].casefold(), row["alternate_emails"].casefold()): row
+        for row in directory_matches
+        if row["primary_email"] or row["alternate_emails"]
+    }
+    if not unique:
+        return f"NO_DIRECTORY_EMAIL: {instructor_name!r} matched the faculty directory, but that row has no usable email address."
+    candidate_emails = {
+        row["primary_email"].casefold()
+        or row["alternate_emails"].split("; ", 1)[0].casefold()
+        for row in unique.values()
+    }
+    if len(candidate_emails) > 1:
+        candidates = "; ".join(
+            f"{row['name']} ({row['designation'] or 'designation not listed'}, {row['department'] or 'department not listed'})"
+            for row in unique.values()
+        )
+        return f"AMBIGUOUS_CONTACT: Multiple directory records match {instructor_name!r}: {candidates}. Ask for clarification; do not draft an email."
+
+    row = next(iter(unique.values()))
+    primary = row["primary_email"]
+    alternate = row["alternate_emails"]
+    selected_email = primary or (alternate.split("; ", 1)[0] if alternate else "")
+    citation_id = _citation_id(row["source_path"])
+    citation_suffix = f" | citation ID: {citation_id}" if citation_id else ""
+    return (
+        f"CONTACT_FOUND | {row['name']} | email for contact: {selected_email}"
+        f" | primary email: {primary or 'not listed'} | alternate email IDs: {alternate or 'not listed'}"
+        f" | designation: {row['designation'] or 'not listed'} | department: {row['department'] or 'not listed'}"
+        f" | source: {row['source_path']} row {row['source_row']}"
+        f"{citation_suffix}"
+    )
 
 
 def draft_instructor_email(course_code: str, reason: str, duration: str = "", student_name: str = "") -> str:
@@ -169,7 +268,9 @@ def draft_instructor_email(course_code: str, reason: str, duration: str = "", st
     row = rows[0]
     instructor = row.get("instructor", "").strip()
     contact = lookup_faculty_email(instructor) if instructor else "NO_VERIFIED_EMAIL"
-    email_match = re.search(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", contact)
+    if contact.startswith("AMBIGUOUS_CONTACT"):
+        return f"{contact} No email was drafted."
+    email_match = EMAIL_RE.search(contact)
     recipient = email_match.group(0) if email_match else "[verified instructor email not found]"
     course_name = row.get("course_name", "")
     greeting = instructor if instructor else "Course Instructor"
@@ -183,5 +284,12 @@ def draft_instructor_email(course_code: str, reason: str, duration: str = "", st
         "Please let me know if any additional information or documentation is required.\n\n"
         f"Thank you for your consideration.\n\n{student}\n"
     )
-    contact_note = "Instructor email verified from the faculty contact file." if email_match else "Instructor name came from the course list, but no verified email was found; fill in the recipient after checking an official contact source."
+    contact_source = next((line.strip() for line in contact.splitlines() if "| source:" in line), "")
+    contact_citation = next((line.split("| citation ID:", 1)[-1].strip() for line in contact.splitlines() if "| citation ID:" in line), "")
+    contact_note = (
+        f"Instructor contact source: {contact_source}"
+        + (f"; citation ID: {contact_citation}" if contact_citation else "")
+        if email_match else
+        "Instructor name came from the course list, but no usable email was found; check an official contact source."
+    )
     return body + "\n" + contact_note + " This is a draft only; it has not been sent."
