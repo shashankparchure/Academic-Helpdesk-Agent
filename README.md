@@ -41,12 +41,17 @@ Place source files under `data\raw\` in appropriate subfolders, for example `dat
 Run these commands from the repository root, with the environment activated:
 
 ```bat
+python scripts\ocr_scanned_pdfs.py
 python scripts\process_raw_data.py
 python scripts\normalize_academic_data.py
 python scripts\build_faculty_contacts.py
 ```
 
-Review `data\metadata\source_register.csv` and select **20 to 30 source documents** by setting `include_in_rag` to `yes` for the selected documents and `no` for the rest. This document selection is part of the assignment requirements. Keep OCR sidecar text rows set to `no`; the matching PDF row represents that source. The normalizer currently marks eligible sources `yes` by default, so curate the register after each normalization run.
+`ocr_scanned_pdfs.py` writes a same-name `.txt` sidecar for every PDF with scanned pages (only those pages are OCRed). It needs the `pdftoppm` (poppler-utils) and `tesseract` command-line tools, e.g. `apt-get install -y poppler-utils tesseract-ocr` on Linux/Colab. Sidecars for the current scanned circulars are kept beside their PDFs, so this step can be skipped unless new scanned PDFs are added. OCR of tables is imperfect; check critical values against the PDF.
+
+Workbook sheets and CSV files are extracted row by row into the searchable text. Sheets that are also normalized into `course_offerings.csv`, `classroom_allocation.csv`, or `slot_times.csv` are indexed only from those tables.
+
+The normalizer marks every processed source `include_in_rag=yes` in `data\metadata\source_register.csv`. Set a row to `no` to leave that source out of the index. Keep OCR sidecar text rows set to `no`; the matching PDF row represents that source.
 
 Review `data\processed\normalized\faculty_contacts.csv` against official sources. Email candidates are marked `needs_review`; only rows marked `verified` from that file are used.
 
@@ -61,7 +66,7 @@ set OLLAMA_API_BASE=http://localhost:11434
 python scripts\build_vector_index.py
 ```
 
-The script rebuilds the Chroma collection at `data\vector_store\chroma` each time. Its completion output includes the number of indexed chunks. The current script accepts up to 75 selected sources; use 20 to 30 for the assignment corpus.
+The script rebuilds the Chroma collection at `data\vector_store\chroma` each time. Its completion output includes the number of indexed chunks. The script accepts 20 to 75 selected sources.
 
 ## Run the ADK agent
 

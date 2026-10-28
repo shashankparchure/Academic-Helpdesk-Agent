@@ -32,6 +32,7 @@ REGISTER_PATH = METADATA_ROOT / "source_register.csv"
 BATCH_SIZE = 16
 MAX_CHUNK_CHARS = 1800
 CHUNK_OVERLAP = 220
+NORMALIZED_TABLES = ("course_offerings.csv", "classroom_allocation.csv", "slot_times.csv")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -39,6 +40,11 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return []
     with path.open(encoding="utf-8-sig", newline="") as stream:
         return list(csv.DictReader(stream))
+
+
+def normalized_source_key(source_file: str) -> str:
+    key = source_file.replace("\\", "/")
+    return key[len("data/raw/"):] if key.startswith("data/raw/") else key
 
 
 def stable_id(text: str) -> str:
@@ -116,6 +122,14 @@ def collect_documents() -> tuple[list[str], list[str], list[dict[str, Any]]]:
     ids: list[str] = []
     metadatas: list[dict[str, Any]] = []
 
+    # Sheets indexed row-by-row from the normalized tables below; skip their
+    # sheet text so the same rows are not indexed twice.
+    normalized_sheets = {
+        (normalized_source_key(row.get("source_file", "")), row.get("source_sheet", "").strip())
+        for filename in NORMALIZED_TABLES
+        for row in read_csv(NORMALIZED_ROOT / filename)
+    }
+
     for row in register:
         if row.get("include_in_rag", "").casefold() != "yes":
             continue
@@ -127,19 +141,17 @@ def collect_documents() -> tuple[list[str], list[str], list[dict[str, Any]]]:
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
         for index, (chunk, page, section) in enumerate(split_text(text)):
+            if section.startswith("Sheet:") and (row.get("raw_path", ""), section[len("Sheet:"):].strip()) in normalized_sheets:
+                continue
             documents.append(chunk)
             ids.append(stable_id(f"{row.get('citation_id')}|md|{index}|{chunk[:100]}"))
             metadatas.append(source_metadata(row, page=page, sheet=section if section.startswith("Sheet:") else ""))
 
     # Add one retrievable record per normalized row. Each record points back to the
     # workbook and the sheet/row shown in its metadata.
-    for filename in ("course_offerings.csv", "classroom_allocation.csv", "slot_times.csv"):
+    for filename in NORMALIZED_TABLES:
         for row in read_csv(NORMALIZED_ROOT / filename):
-            source_file = row.get("source_file", "")
-            source_key = source_file.replace("\\", "/")
-            if source_key.startswith("data/raw/"):
-                source_key = source_key[len("data/raw/"):]
-            source = source_by_raw.get(source_key)
+            source = source_by_raw.get(normalized_source_key(row.get("source_file", "")))
             if not source or source.get("include_in_rag", "").casefold() != "yes":
                 continue
             keys = [key for key in row if key not in {"source_file"} and row.get(key)]

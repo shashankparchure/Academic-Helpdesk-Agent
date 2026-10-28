@@ -1,0 +1,28 @@
+{
+  "sets": [
+    {
+      "set": 1,
+      "prompts": [
+        "What attendance requirement must a student meet to sit in the Major examination?",
+        "How many Open Elective credits are required to earn a B.Tech. degree?",
+        "What slot is assigned to the course Autonomous Systems? Cite the course-list source.",
+        "What do the current course overload guidelines say about taking credits beyond the normal load?",
+        "Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the instructor and contact details from the supplied data, cite the sources, and do not send the email.",
+        "What dining options are available on the IIT Jodhpur campus?",
+        "What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?"
+      ]
+    },
+    {
+      "set": 2,
+      "prompts": [
+        "According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?",
+        "What change is described in the 28 Credit Revision dated 11 January 2024?",
+        "Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.",
+        "For EEL7080, what slot, weekday, and class time are listed in the timetable data?",
+        "What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the faculty directory row and the course source used to identify the instructor.",
+        "Recommend restaurants near campus for dinner.",
+        "Plan a weekend sightseeing trip from Jodhpur to Jaisalmer."
+      ]
+    }
+  ]
+}

@@ -16,22 +16,10 @@ any other question, such as, “What are the available dining options
 on the campus?”, or "What is the best way to reach the campus from Jodhpur city center?", the agent should answer that it does not know,
 instead of guessing an answer.
 
+As part of this project, the team should collect 20 to 30 real documents related to rules and regulations, time table, course registration,
+recent office orders, faculty email Ids, etc. Personal data can be replaced with dummy values.
 
-
-
-
-As
-part of this project, the team should collect 20 to 30 real documents
-related to rules and regulations, time table, course registration,
-recent office orders, faculty email Ids, etc. Personal data can be
-replaced with dummy values.
-
-
-
-
-
-The
-agent should be using RAG and would be requiring several tools to
+The agent should be using RAG and would be requiring several tools to
 assist the process of generating a response. Example tools can be:
 searching the most relevant chunks from the vector store, looking up
 time table and course codes from CSV files, looking up email ID of
@@ -41,10 +29,6 @@ a log of the questions it cannot answer, so that these questions can
 be referred to the human to answer. The generated answer should refer
 to/cite the document it came from.
 
-
-
-
-
 The
 project should be executable on a laptop/computer with 16GB RAM. You
 can use Google-ADK for the agent framework. The
@@ -52,8 +36,6 @@ ADK can invoke the Ollama-hosted models through its LiteLLM
 connector. You can use 8B chat models such as Qwen3 or Llama 3.1. For
 implementing RAG you can use a local embedding model via Ollama and a
 local vector store such as ChromaDB.
-
-
 
 Once
 the base version with a single agent, RAG pipeline and all
@@ -63,10 +45,6 @@ can transfer the question to a policy agent (to answer questions
 related to rules and regulations and curriculum), schedule agent (to
 answer questions related to slots and time table) and an email agent
 (to get the instructor contact and draft an email).
-
-
-
-
 
 For
 a collection of 20 to 30 prompts, analyze the performance of the
