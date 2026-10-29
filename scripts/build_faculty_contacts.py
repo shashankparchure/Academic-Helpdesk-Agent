@@ -61,6 +61,9 @@ def main() -> None:
         text = normalize_email_text(path.read_text(encoding="utf-8", errors="replace"))
         raw_match = re.search(r"^Raw path:\s*(.+)$", text, flags=re.MULTILINE)
         raw_path = raw_match.group(1).strip() if raw_match else ""
+        # Directory CSVs are read row by row by the email tool; text pairing would mismatch them.
+        if raw_path.casefold().endswith(".csv"):
+            continue
         # Keep each page separate so names and email addresses are paired only locally.
         pages = re.split(r"(?=^## Page\s+\d+\s*$)", text, flags=re.MULTILINE)
         for page in pages:

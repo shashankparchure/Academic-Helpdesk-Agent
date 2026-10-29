@@ -5,7 +5,8 @@ Run from the project directory with its virtual environment active:
 
 Raw files are never modified. Legacy .doc files are inventoried and reported as
 unsupported; convert those to .docx or PDF before processing if their contents
-are needed. Scanned PDFs with no extractable text are flagged for OCR.
+are needed. Scanned PDFs with no extractable text are flagged for OCR; run
+scripts/ocr_scanned_pdfs.py first to create their text sidecars.
 """
 
 from __future__ import annotations
@@ -87,6 +88,28 @@ def read_text_file(path: Path) -> tuple[str, bool]:
     return text.strip(), repaired
 
 
+def cell_text(value: object) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, float) and value.is_integer():
+        value = int(value)
+    return re.sub(r"\s+", " ", str(value)).strip()
+
+
+def render_rows(rows: list[list[object]], header: list[str] | None = None, first_row_number: int = 1) -> str:
+    """Render non-empty rows as blank-line-separated paragraphs so chunks break between rows."""
+    lines = []
+    for number, row in enumerate(rows, start=first_row_number):
+        cells = [cell_text(value) for value in row]
+        if header:
+            parts = [f"{name}: {value}" if name else value for name, value in zip(header, cells) if value]
+        else:
+            parts = [value for value in cells if value]
+        if parts:
+            lines.append(f"Row {number}: " + " | ".join(parts))
+    return "\n\n".join(lines)
+
+
 def export_workbook(path: Path) -> tuple[str, int]:
     workbook = load_workbook(path, read_only=True, data_only=True)
     output_dir = SHEET_ROOT / slug(path.parent.name) / slug(path.stem)
@@ -94,15 +117,26 @@ def export_workbook(path: Path) -> tuple[str, int]:
     markdown = []
     for sheet in workbook.worksheets:
         sheet_path = output_dir / f"{slug(sheet.title)}.csv"
-        row_count = 0
+        rows = [list(row) for row in sheet.iter_rows(values_only=True)]
         with sheet_path.open("w", newline="", encoding="utf-8-sig") as stream:
             writer = csv.writer(stream)
-            for row in sheet.iter_rows(values_only=True):
+            for row in rows:
                 writer.writerow(["" if value is None else value for value in row])
-                row_count += 1
-        markdown.append(f"## Sheet: {sheet.title}\n\nCSV: {sheet_path.relative_to(PROJECT_ROOT).as_posix()}\n\nRows exported: {row_count}")
+        markdown.append(
+            f"## Sheet: {sheet.title.strip()}\n\nCSV: {sheet_path.relative_to(PROJECT_ROOT).as_posix()}\n\n"
+            f"Rows exported: {len(rows)}\n\n{render_rows(rows)}"
+        )
     workbook.close()
     return "\n\n".join(markdown), len(markdown)
+
+
+def extract_csv(path: Path) -> tuple[str, int]:
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.reader(stream))
+    if not rows:
+        return "", 0
+    header = [cell_text(name) for name in rows[0]]
+    return f"## Table: {path.name}\n\n{render_rows(rows[1:], header, first_row_number=2)}", len(rows) - 1
 
 
 def write_csv(path: Path, rows: list[dict], columns: list[str]) -> Path:
@@ -208,6 +242,12 @@ def main() -> None:
                     out.parent.mkdir(parents=True, exist_ok=True)
                     out.write_text(f"# Workbook: {path.name}\n\nRaw path: {relative}\n\n{text}\n", encoding="utf-8")
                     row.update(processing_status="processed", pages_or_sheets=sheet_count, output_path=out.relative_to(PROJECT_ROOT).as_posix())
+                elif path.suffix.lower() == ".csv":
+                    text, row_count = extract_csv(path)
+                    out = TEXT_ROOT / slug(path.parent.name) / f"{slug(path.stem)}.md"
+                    out.parent.mkdir(parents=True, exist_ok=True)
+                    out.write_text(f"# Table: {path.name}\n\nRaw path: {relative}\n\n{text}\n", encoding="utf-8")
+                    row.update(processing_status="processed", pages_or_sheets=row_count, output_path=out.relative_to(PROJECT_ROOT).as_posix())
                 elif path.suffix.lower() == ".txt":
                     if path in text_sidecars:
                         source_pdf = path.with_suffix(".pdf")
