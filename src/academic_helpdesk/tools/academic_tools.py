@@ -123,16 +123,24 @@ def count_course_offerings(department_sheet: str, course_level_digit: str) -> st
     applies to. Return those limitations with the count instead of silently treating all courses as
     electives or as belonging to the current semester.
     """
-    department = re.sub(r"\s+", " ", department_sheet).strip().casefold()
-    level = str(course_level_digit).strip()
+    department = _header_key(department_sheet)
+    department_aliases = {"schoolofliberalarts": "sola"}
+    department = department_aliases.get(department, department)
+    level_digits = re.findall(r"\d+", str(course_level_digit))
+    if len(level_digits) == 1 and len(level_digits[0]) == 1:
+        level = level_digits[0]
+    elif len(level_digits) == 1 and len(level_digits[0]) == 3 and level_digits[0][1:] == "00":
+        level = level_digits[0][0]
+    else:
+        level = ""
     if not department or not re.fullmatch(r"[1-9]", level):
-        return "INVALID_FILTER: Provide an exact department sheet name and one course-level digit."
+        return "INVALID_FILTER: Provide a department sheet and a level digit or level such as 400."
 
     rows = _read_csv(OFFERINGS)
     sheets = sorted({row.get("department_sheet", "").strip() for row in rows if row.get("department_sheet", "").strip()})
     selected = [
         row for row in rows
-        if row.get("department_sheet", "").strip().casefold() == department
+        if _header_key(row.get("department_sheet", "")) == department
         and row.get("course_level_digit", "").strip() == level
     ]
     if not selected:

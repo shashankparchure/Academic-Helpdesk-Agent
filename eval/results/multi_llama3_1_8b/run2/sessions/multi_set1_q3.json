@@ -1,0 +1,201 @@
+{
+  "id": "279d2e22-3e78-4947-a64f-fe01435eb25c",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "What slot is assigned to the course Autonomous Systems? Cite the course-list source."
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "9dd4a202-b1de-4b73-9a3d-7767a41c1c0a",
+      "timestamp": 1793257667.2545323
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_dsz8ystn",
+              "args": {
+                "agent_name": "schedule_agent"
+              },
+              "name": "transfer_to_agent"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 20,
+        "promptTokenCount": 736,
+        "totalTokenCount": 756
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "95c822e3-7a84-4897-8709-e4407e1b4e8f",
+      "timestamp": 1793257667.2765431
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_dsz8ystn",
+              "name": "transfer_to_agent",
+              "response": {
+                "result": null
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "transferToAgent": "schedule_agent",
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "c47d20ce-81c0-492f-9261-1d57a7f804ed",
+      "timestamp": 1793257672.7017274
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_46mgerpw",
+              "args": {
+                "course_code_or_name": "Autonomous Systems"
+              },
+              "name": "lookup_course"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 22,
+        "promptTokenCount": 1197,
+        "totalTokenCount": 1219
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "longRunningToolIds": [],
+      "id": "02bf14ca-f487-4b9a-86ef-12e879a2b5eb",
+      "timestamp": 1793257672.7187257
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_46mgerpw",
+              "name": "lookup_course",
+              "response": {
+                "result": "CSL7650 | Autonomous Systems (AI+X) | department/tab: CSE | program/batch: UG4-AI | slot: E | instructor: Gaurav Harit | credits: 3 | source: data/raw/timetables/Finalized courses list.xlsx#CSE rows 26 | citation ID: DOC0064"
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "id": "fb924eb3-ec0a-4514-a37b-2ca9d78a17a4",
+      "timestamp": 1793257675.836502
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "The slot assigned to the course Autonomous Systems is E, according to the course-list source (data/raw/timetables/Finalized courses list.xlsx#CSE rows 26, citation ID: DOC0064)."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 44,
+        "promptTokenCount": 823,
+        "totalTokenCount": 867
+      },
+      "invocationId": "e-ebca9a69-43bd-499e-a80f-c56f3714cacb",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "id": "6bee1e4d-e978-4fea-b09a-f6cf75314612",
+      "timestamp": 1793257675.8535035
+    }
+  ],
+  "lastUpdateTime": 1793257675.8535035
+}

@@ -3,7 +3,7 @@
 from google.adk.agents import Agent
 from google.adk.models.lite_llm import LiteLlm
 
-from academic_helpdesk.settings import CHAT_MODEL
+from academic_helpdesk.settings import MULTI_CHAT_MODEL
 from academic_helpdesk.rag.retrieval import (
     record_unanswered_question,
     search_academic_sources,
@@ -18,7 +18,7 @@ from academic_helpdesk.tools.academic_tools import (
 
 
 def local_model() -> LiteLlm:
-    return LiteLlm(model=f"ollama_chat/{CHAT_MODEL}")
+    return LiteLlm(model=f"ollama_chat/{MULTI_CHAT_MODEL}")
 
 
 policy_agent = Agent(

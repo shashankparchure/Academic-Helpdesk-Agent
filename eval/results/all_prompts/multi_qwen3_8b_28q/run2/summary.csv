@@ -1,0 +1,232 @@
+﻿run,set,question,agent,prompt,final_answer,cited_doc_ids,tools_called,agents_involved,logged_for_followup,error,answer_correct,citation_correct,refusal_correct,unsupported_claims,notes
+2,1,1,multi,What attendance requirement must a student meet to sit in the Major examination?,"The available academic sources do not explicitly state the attendance requirement for sitting in the Major examination. The closest relevant documents (e.g., **Academic Regulations_Final_03_09_2019**) do not include specific attendance thresholds for major exams in their excerpts. Similarly, exam timetables and minor examination guidelines provided do not address this requirement. 
+
+For precise details, you would need to consult the full **Academic Regulations document** (citation ID: DOC0027) or contact the IIT Jodhpur academic office directly. 
+
+No evidence-backed answer is available in the provided sources.",DOC0027,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+2,1,2,multi,How many Open Elective credits are required to earn a B.Tech. degree?,"To address your query about IIT Jodhpur's academic policies, curriculum, or course requirements, please specify the topic you’d like to explore. For example:
+
+1. **Credit Requirements**:  
+   - B.Tech. students must earn a minimum of **38 credits** by the end of the 3rd semester (S. No. 300) and **75 credits** by the 4th semester (S. No. 400) to progress.  
+   - Dual Degree (B.Tech. + M.Tech.) students must complete **75 credits** by the 4th semester (S. No. 400).  
+
+2. **Course Categories**:  
+   - **Institute Core (I)**: Engineering (34 credits), Science (16 credits), Humanities (12 credits).  
+   - **Programme Linked (L)**: Science (7 credits).  
+   - **Programme Core (P)**: Compulsory courses (50 credits), Electives (18 credits), and a project (3 credits).  
+   - **Open Electives (O)**: 10 credits for regular B.Tech. (0 for Dual Degree).  
+
+3. **Maximum Program Duration**:  
+   - B.Tech. programs must be completed within **14 registered semesters** (Section 11.4).  
+
+4. **Extra Credits**:  
+   - Students with a CGPA ≥ 6.0 from the 6th semester can register for **up to 4 extra credits** (Section 11.3).  
+
+5. **Non-Graded Credits**:  
+   - Humanities (6 credits), Engineering (3 credits), and Design/Practical Experience (6 credits) contribute to the total graded + non-graded credits (e.g., 165 for regular B.Tech.).  
+
+For detailed rules, refer to the **Academic Regulations (2019)** or specific course catalogs like **B.Tech. CI_09102020**. Let me know your exact question!",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,1,3,multi,What slot is assigned to the course Autonomous Systems? Cite the course-list source.,"The course **Autonomous Systems** (code: CSL7650) is assigned to **slot E**. 
+
+**Source citation**:  
+[data/raw/timetables/Finalized courses list.xlsx#CSE rows 26](#CSE rows 26) (citation ID: DOC0064).  
+
+No further action required, as the slot and source are explicitly provided in the course-list entry.",DOC0064,transfer_to_agent; lookup_course,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,1,4,multi,What do the current course overload guidelines say about taking credits beyond the normal load?,"The **Course Overload Guidelines** document (citation ID: DOC0036) outlines policies for exceeding the normal credit load at IIT Jodhpur. However, the retrieved excerpt only contains metadata (title, path) and no substantive content. 
+
+To provide accurate details about credit limits, approval processes, or exceptions, the full document would need to be accessed. Since this is not possible via the current tools, I recommend contacting the **Academic Office** directly for the most up-to-date and detailed guidelines. 
+
+For urgent matters, refer to the official IIT Jodhpur academic handbook or contact the registrar’s office. 
+
+**Note**: The document path `office_orders/Course Overload Guidelines.pdf` may be accessible internally but is not publicly available through this system.",DOC0036,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+2,1,5,multi,"Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the instructor and contact details from the supplied data, cite the sources, and do not send the email.","The email draft has been prepared with the verified instructor details and course information. Here's the final version:
+
+---
+
+**To:** gharit@iitj.ac.in  
+**Subject:** Request regarding CSL7650 - Autonomous Systems (AI+X)  
+
+Dear Gaurav Harit,  
+
+I am writing to request sick leave for two days for CSL7650 (Autonomous Systems (AI+X)). Please let me know if any additional information or documentation is required.  
+
+Thank you for your consideration.  
+
+[Student Name]  
+
+---
+
+**Instructor Contact Source:**  
+CONTACT_FOUND | Gaurav Harit | email: gharit@iitj.ac.in (primary) | alternate: head_cse@iitj.ac.in | designation: Professor | department: CSE | source: data/raw/iitj_faculty.csv row 117  
+**Course Source:** CSL7650 | Autonomous Systems (AI+X) | department: CSE | program: UG4-AI | source: data/raw/timetables/Finalized courses list.xlsx#CSE rows 26 (citation ID: DOC0064)  
+
+This is a draft only; it has not been sent.  
+
+---  
+Let me know if you need to adjust the student name or add further details!",DOC0064,transfer_to_agent; lookup_course; lookup_faculty_email; draft_instructor_email,iitj_academic_helpdesk_multi; email_agent,no,,yes,yes,,,
+2,1,6,multi,What dining options are available on the IIT Jodhpur campus?,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, courses, registration, examinations, timetables, and instructor contact information. Questions about campus dining facilities are outside our scope. Please consult the IIT Jodhpur campus services office or official university resources for details on dining options.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,1,7,multi,What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, course regulations, registration, examinations, timetables, and instructor contact information. We cannot provide travel advice or logistical guidance for reaching the campus. Feel free to ask about academic policies, course details, or other academic-related inquiries!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,2,1,multi,What rules apply to the Minor Examination in Semester I of Academic Year 2026-27?,"The rules for the Minor Examination in Semester I of the Academic Year 2026-27 are detailed in the official guidelines document titled **""Indian Institute of Technology Jodhpur Mail - Guidelines for the Minor Examination Semester I of Academic Year 2026-27""** (Citation ID: DOC0040). Key points from the document include:
+
+1. **Applicability**: The guidelines apply to students registered for courses under the Autumn SI (Semester I) of the 2026-27 academic year.
+2. **Exam Conduct**: The Minor Examination rules are administered by the Examination Cell, with specific instructions for students registered in the Autumn SI batch.
+3. **Contact**: Students are directed to contact the Examination Cell (examhelp@iitj.ac.in) for further details.
+
+For precise rules (e.g., exam dates, eligibility, or procedures), refer to the full document via the raw path:  
+`office_orders/Indian Institute of Technology Jodhpur Mail - Guidelines for the Minor Examination Semester I of Academic Year 2026-27.pdf`  
+
+Other sources (e.g., pre-registration or slot systems) are not directly relevant to the Minor Examination rules.",DOC0040,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,for the first time correct answer to this question was given after many runs
+2,2,2,multi,What courses or credit requirements are listed for the Minor in Management for the B23/B24 batches?,"The **Minor in Management** for **B23/B24 batches** requires a total of **15 credits**, structured as follows:
+
+---
+
+### **Core Courses (9 credits)**  
+1. **Introduction to Business & Management** (MSL4010) – 3 credits  
+2. **Managing Digital Enterprises** (MSL7140) – 2 credits  
+3. **Financial Accounting & Reporting** (MSL71040) – 2 credits  
+4. **Marketing Management-I** (MSL7060) – 2 credits  
+
+---
+
+### **Elective Courses (6 credits)**  
+Choose **6 credits** from the following:  
+- Organizational Behaviour (2-0-0)  
+- Statistics for Management (2-0-0)  
+- Managerial Economics (2-0-0)  
+- Data Management & Analysis (0-0-4[2])  
+- Operations Research (2-0-0)  
+- Corporate Finance-I (2-0-0)  
+- Macroeconomic Environment of Business (2-0-0)  
+- Business Research Methods (1-0-0)  
+- Strategy Formulation (2-0-0)  
+- Operations Management (2-0-0)  
+- Entrepreneurial Experiences (2-0-0)  
+- Business Analytics Lab-1 (0-0-2[1])  
+- Global Economy (1-0-0)  
+- Marketing Management-II (1-0-0)  
+- Econometrics (2-0-0)  
+- Legal Aspects of Business (2-0-0)  
+- Managing Human Capital (2-0-0)  
+- Strategy Execution (1-0-0)  
+
+**Note**: Elective offerings depend on faculty availability.  
+
+---
+
+**Source**: [Minor in Management_B23_B24.pdf](#) (DOC0019, Page 1)",DOC0019,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,2,3,multi,"For EEL4350, what slot, weekday, and class time are listed in the timetable data?","The timetable data for **EEL4350** lists the following:
+
+- **Slot**: E  
+- **Weekdays/Time**: Tuesday 11–11:50, Thursday 11–11:50, Friday 11–11:50  
+- **Room**: Not specified  
+- **Instructor**: Manoj Gupta  
+
+Source: [AY 2026-27 Semester I Slot System (2nd Year onwards)](data/raw/timetables/AY%202026-27_Semester%20I_Slot%20System%20(2nd%20Year%20onwards).xlsx#Classroom%20Allocation%20row%20182) (Citation ID: DOC0063).",DOC0063,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,2,4,multi,"How many 400-level electives have been floated by the Humanities department this semester? Cite the source, and explain if the available course data does not identify the department, term, or elective category clearly enough to give a supported count.","The available course data does not identify the Humanities department as a valid department sheet in the normalized offerings (see tool response). The listed department sheets exclude ""Humanities,"" so no 400-level courses can be counted for this department. Additionally, the data does not specify whether any courses are electives, as the function's output lacks explicit elective categorization. Thus, the count cannot be determined with the provided evidence. 
+
+Source: `count_course_offerings` tool response (department sheet validation).",,transfer_to_agent; count_course_offerings,iitj_academic_helpdesk_multi; schedule_agent,no,,no,no,,,
+2,2,5,multi,What guidance does Circular 29 provide about Engineering Science programmes for B.Tech. students?,"Circular 29 provides the following guidance for B.Tech. students pursuing Engineering Science programmes:
+
+1. **Eligibility**:  
+   Students may opt for the B.Tech. in Engineering Science **after completing their first year** to pursue a focused area in Science and Engineering.
+
+2. **Program Structure**:  
+   - **Core Courses**: Students must complete core requirements in the first two years.  
+   - **Electives**: In the final two years, students design their own curriculum using electives across engineering, science, and humanities.  
+   - **Specialization**: Up to **10 credits** from electives can be used to earn a **minor/specialization** as an add-on to the B.Tech. degree.
+
+3. **Credit Distribution**:  
+   The table in Circular 29 outlines credit categories (e.g., Core, Linked, Programme Core, Open Electives) and their allocated credits (e.g., 34–69 credits for Engineering Core, 16 credits for Science Core). Total graded credits sum to **150**, with non-graded credits (e.g., Humanities, Engineering) adding to the total.
+
+**Source**: [Circular_29_Guideline for B.Tech. in Engineering Science programmes.pdf](raw_path:course_catalogs/Circular_29_Guideline for B.Tech. in Engineering Science programmes.pdf), Page 1.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,2,6,multi,Which gaming laptop should I buy for machine learning coursework?,"The IIT Jodhpur academic helpdesk cannot provide personal recommendations for hardware purchases. For guidance on system requirements for machine learning coursework, please consult the **departmental technical guidelines** or **academic program specifications** available on the IIT Jodhpur portal. Let me know if you need help with academic policies, course schedules, or instructor contact details!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,2,7,multi,What will the weather be in Jodhpur tomorrow?,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, courses, registration, examinations, and instructor contacts. We cannot provide weather forecasts or non-academic information. For weather updates, please check a reliable weather service or app. Let us know if you have academic-related questions!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,3,1,multi,"How many level-4 courses are listed under the School of Liberal Arts (SoLA), and which are explicitly identified as electives? Cite the workbook sheet and rows, and state any category or term information the source does not provide.","The provided tools and previous agent interactions indicate that the required data about level-4 courses under the School of Liberal Arts (SoLA) and their elective status is not accessible through the current functions. The `search_academic_sources` tool would need specific queries or citations, and `lookup_course` requires exact course codes or titles, which the user did not provide. Since no valid evidence or course data was returned in prior attempts, the answer cannot be determined with the available tools. 
+
+Answer: The requested information is not available through the current academic sources or course lookup tools. No valid citations or data were found to answer the question about level-4 courses in SoLA and their elective status.",,transfer_to_agent,iitj_academic_helpdesk_multi; policy_agent,no,,no,no,,,some runs it answers some it doesn't
+2,3,2,multi,How should students complete pre-registration for Semester I of Academic Year 2026-27?,"Students should complete pre-registration for Semester I of Academic Year 2026-27 as per the official guidelines from IIT Jodhpur. According to the document **""Indian Institute of Technology Jodhpur Mail - [Important] Pre-Registration for Semester-I of AY 2026-27""** (citation ID: DOC0039, page 1):
+
+1. **Pre-Registration Window**:  
+   - Opens on **June 16, 2026, at 9:00 AM** and closes on **June 19, 2026, at 05:00 PM**.  
+   - Only students who have **cleared all pending dues** in the ERP portal will have access to this window.
+
+2. **Mandatory Nature**:  
+   - Completion of pre-registration is **mandatory**.  
+   - Courses selected during pre-registration are considered **final for main registration**.
+
+3. **Key Instructions**:  
+   - Ensure all financial and academic dues are cleared via the ERP portal.  
+   - Log in during the specified dates to select courses.  
+
+For exact steps or further clarification, refer to the full document via the provided path: `office_orders/Indian Institute of Technology Jodhpur Mail - [Important] Pre-Registration for Semester-I of AY 2026-27.pdf` (citation ID: DOC0039).",DOC0039,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,3,3,multi,"For LAL4070 Health Economics, what day, time, and classroom are listed in the allocation data?","The allocation data for **LAL4070 Health Economics** is as follows:  
+
+- **Days/Time**:  
+  - **Friday**: 10:00–10:50 AM  
+  - **Monday**: 11:00–11:50 AM  
+  - **Wednesday**: 11:00–11:50 AM  
+- **Classroom**: LHC 204  
+- **Instructor**: Alok Ranjan  
+
+**Source**: [DOC0063](data/raw/timetables/AY%202026-27_Semester%20I_Slot%20System%20(2nd%20Year%20onwards).xlsx#Classroom%20Allocation%20row%20108)  
+
+Let me know if you need further details!",DOC0063,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,3,4,multi,What options or rules for undergraduate specializations and minors are described in the UG Specialization and Minors circular dated 27 March 2023?,"The **UG Specialization and Minors circular dated 27 March 2023** is referenced in the search results as **DOC0021** (title: *2799_Circular_UG Specilization and Minors 27 March 2023.pdf*). This document likely contains the rules and options for undergraduate specializations and minors. However, the excerpt provided does not include the full text of the circular, only metadata about its location. 
+
+For precise details, you would need to access the document directly via the raw path:  
+**office_orders/2799_Circular_UG Specilization and Minors 27 March 2023.pdf**  
+
+Other related documents (e.g., timetables, minor examination guidelines) are listed but are not the primary source for the circular itself. Let me know if you need further clarification!",DOC0021,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+2,3,5,multi,"Draft an email to the instructor of EEL4330 requesting two days of sick leave. Include the contact source and citation, and do not send the email.",The email draft requires your student name to proceed. Please provide your name so I can complete the draft with the necessary details.,,transfer_to_agent; lookup_course; lookup_faculty_email,iitj_academic_helpdesk_multi; email_agent,no,,no,yes,,,it is asking for follow up on name of student and other details
+2,3,6,multi,Who will win the next IPL season?,"The IIT Jodhpur Academic Helpdesk is designed to assist with academic inquiries related to programs, courses, regulations, examinations, and instructor contact information. Predicting sports outcomes like the IPL season is outside the scope of our academic support. For such questions, we recommend checking sports analysis platforms or official IPL updates. Let us know if you have academic-related queries!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,3,7,multi,Suggest a good recipe for dal to cook tonight.,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, courses, regulations, and related inquiries. We cannot provide recipe suggestions. For academic assistance, feel free to ask!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,4,1,multi,"According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?","The **BS Chemistry curriculum document** (citation ID: `DOC0007`, title: `BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf`) was located in the `course_catalogs` directory. However, the provided excerpt does not include the actual program requirements—only metadata about the document's location. 
+
+To proceed, you would need to access the full document via the raw path:  
+`course_catalogs/BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf`  
+for detailed graduation requirements (e.g., credit hours, core courses, electives, lab work, etc.). 
+
+If you need further assistance, clarify whether the document is accessible or if additional searches are required. 
+
+**Note**: The current tool response does not include the specific requirements text.",DOC0007,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,some time answers some time doesn't
+2,4,2,multi,What change is described in the 28 Credit Revision dated 11 January 2024?,"The document titled **""28_Credit_Revision 11 Jan 2024""** (citation ID: DOC0022) was identified via the search, but its full content details are not visible in the excerpt provided. The OCR text source indicates it is a PDF file, but no specific changes or revisions are described in the excerpt. 
+
+To proceed, you would need direct access to the full document (e.g., the PDF or text file) for detailed information. If this document is publicly accessible via IIT Jodhpur’s official channels, you may review it directly. For further assistance, consider contacting the academic office for clarification. 
+
+No actionable data was extracted from the current source.",DOC0022,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+2,4,3,multi,Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.,"The discontinuation of branch changes for B.Tech. students at IIT Jodhpur for the Academic Year 2026–27 is explicitly stated in **Circular-Discontinuation of Branch Change from Academic Year 2026–27 in UG Programs** (citation ID: DOC0031). This circular, dated December 2025, confirms that the Senate discontinued branch change provisions for UG programs starting with admissions for 2026–27. Students admitted in 2026 and subsequent years will retain their original JoSAA-allocated branches.
+
+For older guidance, **Circular 57 Revised guidelines for Branch-Change of B.Tech. students** (citation ID: DOC0030) provides general branch-change policies but does not specify discontinuation dates. Since no prior circular explicitly addresses the 2026–27 discontinuation, reconciliation with older guidance is limited to the general framework in DOC0030. 
+
+**Key conflict**: The 2026–27 discontinuation is a new policy, and older guidance (DOC0030) does not conflict but lacks specificity on the 2026–27 timeline. 
+
+Cite:  
+- **Current discontinuation**: DOC0031 (Circular-Discontinuation of Branch Change from Academic Year 2026–27 in UG Programs).  
+- **Older guidance**: DOC0030 (Circular 57 Revised guidelines for Branch-Change of B.Tech. students).",DOC0030; DOC0031,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,4,4,multi,"For EEL7080, what slot, weekday, and class time are listed in the timetable data?","The timetable data for **EEL7080** lists the following:
+
+- **Slot**: F  
+- **Weekdays/Time**: Monday 2–2:50, Tuesday 2–2:50, Thursday 2–2:50  
+- **Room**: LHC 304  
+- **Instructor**: Niladri Sekhar Tripathy  
+
+This information is sourced from the document:  
+`data/raw/timetables/AY 2026-27_Semester I_Slot System (2nd Year onwards).xlsx#Classroom Allocation row 199` (Citation ID: DOC0063).  
+
+Let me know if you need further details!",DOC0063,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,4,5,multi,What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the faculty directory row and the course source used to identify the instructor.,"The instructor for **EEL4350** is **Manoj Gupta**.  
+
+**Primary Email**: `manojgupta@iitj.ac.in`  
+**Alternate Emails**: Not listed in the directory.  
+
+**Faculty Directory Source**:  
+- **Row**: data/raw/iitj_faculty.csv row 183  
+- **Instructor Name**: Manoj Gupta (Assistant Professor, Electronics Engineering)  
+
+**Course Source**:  
+- **File**: data/raw/timetables/Finalized courses list.xlsx#EE rows 29  
+- **Citation ID**: DOC0064  
+
+No alternate email IDs were found in the faculty directory.",DOC0064,transfer_to_agent; lookup_course; lookup_faculty_email,iitj_academic_helpdesk_multi; email_agent,no,,yes,yes,,,
+2,4,6,multi,Recommend restaurants near campus for dinner.,"The IIT Jodhpur Academic Helpdesk cannot assist with non-academic recommendations like restaurant locations. Our support is limited to academic programs, courses, registration, examinations, and related queries. Feel free to ask about academic matters!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,4,7,multi,Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.,"The IIT Jodhpur Academic Helpdesk cannot assist with travel planning or sightseeing itinerary requests, as these fall outside the scope of academic programs, courses, or institutional policies. Let me know if you have questions about academic regulations, course schedules, or instructor contact information!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,

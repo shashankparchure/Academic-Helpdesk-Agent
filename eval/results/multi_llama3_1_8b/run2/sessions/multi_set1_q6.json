@@ -1,0 +1,133 @@
+{
+  "id": "6c0adafe-7b8d-4090-8dbc-b1978c5a60e0",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "What dining options are available on the IIT Jodhpur campus?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-f76f70cf-9449-4c63-984b-7cc5fa5d94e6",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "651053d0-f771-4a89-8800-e9e74f26a390",
+      "timestamp": 1793257782.3939734
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_9i4heid1",
+              "args": {
+                "reason": "out of scope",
+                "question": "What dining options are available on the IIT Jodhpur campus?"
+              },
+              "name": "record_unanswered_question"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 40,
+        "promptTokenCount": 734,
+        "totalTokenCount": 774
+      },
+      "invocationId": "e-f76f70cf-9449-4c63-984b-7cc5fa5d94e6",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "1e6430b8-b9c3-4a7d-bdcf-54b9cd14d6c6",
+      "timestamp": 1793257782.4750628
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_9i4heid1",
+              "name": "record_unanswered_question",
+              "response": {
+                "result": "The question has been recorded for human follow-up."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-f76f70cf-9449-4c63-984b-7cc5fa5d94e6",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "935db6e9-6c52-4ce1-a5dd-ade2d3d590d9",
+      "timestamp": 1793257789.6137333
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "I'm just an AI, I don't have have access to the IIT Jodhpur campus dining options. The helpdesk cannot answer this question."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 33,
+        "promptTokenCount": 586,
+        "totalTokenCount": 619
+      },
+      "invocationId": "e-f76f70cf-9449-4c63-984b-7cc5fa5d94e6",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "f18560ad-be29-4f54-92d1-60b4ade35489",
+      "timestamp": 1793257789.6277375
+    }
+  ],
+  "lastUpdateTime": 1793257789.6277375
+}

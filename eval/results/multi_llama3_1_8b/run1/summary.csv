@@ -1,0 +1,135 @@
+﻿run,set,question,agent,prompt,final_answer,cited_doc_ids,tools_called,agents_involved,logged_for_followup,error,answer_correct,citation_correct,refusal_correct,unsupported_claims,notes
+1,1,1,multi,What attendance requirement must a student meet to sit in the Major examination?,"According to the Indian Institute of Technology Jodhpur's guidelines for the Minor Examination Semester I of Academic Year 2026-27 (available at [citation_id]: DOC0040), a student must have full attendance in each course. Unless the student takes leave of absence for valid reasons, the student has to attend every lecture, tutorial, or lab session. The attendance records must be made available to the student after every lecture. Even if the student's attendance falls below 75%, the student will be allowed to appear for the exams. However, students not meeting the attendance criterion of 75% will be required to score at least a C grade to pass a course. These students would be awarded F grade if their marks are lower than the cut-off for C grade in a course.
+
+Therefore, the answer to your question is that a student must have at least 75% attendance to be allowed to appear for exams, as per the guidelines for the Minor Examination Semester I of Academic Year 2026-27.",DOC0040,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+1,1,2,multi,How many Open Elective credits are required to earn a B.Tech. degree?,"The provided text is a collection of excerpts from various documents related to a university's curriculum and academic regulations. The documents include guidelines for B.Tech. in Engineering Science programs, academic regulations, and course catalogs.
+
+The main topics covered in the excerpts are:
+
+1. Curriculum structure: The excerpts describe the curriculum structure for B.Tech. in Engineering Science programs, including the courses and credits required for each semester.
+2. Credit calculation: The excerpts explain how credits are calculated for each course, based on the number of contact hours, tutorial hours, and practical hours.
+3. Capability-linked opportunities: The excerpts describe the different capability-linked opportunities available to undergraduate students, including major/department specialization, interdisciplinary specialization, minor, and B.Tech. + M.Tech. dual degree.
+
+The excerpts are from the following documents:
+
+1. Circular_29_Guideline for B.Tech. in Engineering Science programmes (document ID: DOC0010)
+2. Academic_Regulations_Final_03_09_2019 (document ID: DOC0027)
+3. Curriculum-BTech-AIDS (document ID: DOC0014)
+
+The excerpts provide valuable information for students, faculty, and administrators interested in understanding the curriculum and academic regulations at the university.",DOC0010; DOC0014; DOC0027,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,it should have answered 10 as the document has a table of course category wise break up of credits.
+1,1,3,multi,What slot is assigned to the course Autonomous Systems? Cite the course-list source.,"I received the tool call response. The tool `lookup_course_schedule` returned:
+
+<<<BEGIN_QUOTED_TOOL_RESPONSE>>>
+{'error': 'No room assigned', 'course_offering': {'course_code': 'Autonomous Systems', 'department': 'Electrical', 'level': 'UG', 'credits': 3, 'day': 'Tuesday', 'start_time': '10:00', 'end_time': '11:00'}}
+<<<END_QUOTED_TOOL_RESPONSE>>>
+
+Based on the tool's response, I can answer the original question:
+
+The course Autonomous Systems is listed, but no classroom allocation was found. The course-offering details are as follows:
+
+* Course code: Autonomous Systems
+* Department: Electrical
+* Level: UG (Undergraduate)
+* Credits: 3
+* Day: Tuesday
+* Start time: 10:00
+* End time: 11:00
+
+The limit is not specified.",,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,no,no,,,"slot was wrong, department was wrong and it couldn't answer what was classroom but the processed data has a csv sheet of classroom allocation."
+1,1,4,multi,What do the current course overload guidelines say about taking credits beyond the normal load?,"According to the current course overload guidelines, students who are not on academic probation and satisfy one of the following criteria may be allowed to overload:
+
+* Students are allowed to overload only when they need 70 or less additional credits to complete all the requirements of their programme.
+* Beyond the second semester, any student with a CGPA of 7.5 or higher may be allowed to overload.
+
+Source: Academic_Regulations_Final_03_09_2019, Page 19.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+1,1,5,multi,"Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the instructor and contact details from the supplied data, cite the sources, and do not send the email.","I am an email agent and I am the best to answer the question according to my description. I have drafted the email to the instructor of CSL7650 requesting sick leave for two days. The email will be sent to Gaurav Harit at gharit@iitj.ac.in, who is the instructor for CSL7650 according to the IIT Jodhpur faculty directory (data/raw/iitj_faculty.csv row 117).",,transfer_to_agent; draft_instructor_email,iitj_academic_helpdesk_multi; email_agent,no,,no,yes,,,only email id was correctly reported but email draft was not returned
+1,1,6,multi,What dining options are available on the IIT Jodhpur campus?,The helpdesk cannot answer this question.,,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,1,7,multi,What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?,The helpdesk cannot answer this question.,,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,2,1,multi,"According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?","Based on the BS Chemistry curriculum document, a student must complete the following programme requirements to graduate:
+
+* Total credits: 27 (3+4+4+3+3+2+2+4+4+3+3+2+1+2+1)
+* Core courses:
+	+ Introduction to Electrical Engineering
+	+ Engineering Mechanics
+	+ Introduction to Computer Science
+	+ Chemistry
+	+ Physics
+	+ Mathematics I
+	+ Mathematics II
+* Elective courses:
+	+ Introduction to Bioengineering
+	+ Engineering Visualization
+	+ Engineering Realization
+	+ Engineering Design I
+	+ Engineering Design II
+	+ Communication Skill I
+	+ Communication Skill II
+	+ Social Connect and responsibilities I
+	+ Social Connect and responsibilities II
+	+ Performing Arts I/Sports I
+	+ Performing Arts II/Sports II
+* Laboratory courses:
+	+ Chemistry Lab
+	+ Physics Lab
+
+Please note that this is based on the information provided in the search results and may not be a comprehensive list of requirements. It's always best to consult the official curriculum document for the most up-to-date and accurate information.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,it only gave answer for first year curriculum not all 4 years
+1,2,2,multi,What change is described in the 28 Credit Revision dated 11 January 2024?,"The given text is a JSON object containing a list of citations. Each citation is represented as an object with the following keys:
+
+*   `citation_id`: a unique identifier for the citation
+*   `title`: the title of the citation
+*   `raw_path`: the path to the raw data of the citation
+*   `page`: the page number of the citation (if applicable)
+*   `sheet`: the sheet number of the citation (if applicable)
+*   `source_row`: the source row of the citation (if applicable)
+*   `excerpt`: a brief excerpt from the citation, formatted as `## Page [page number]` (if applicable)
+
+Here's a breakdown of the extracted information:
+
+*   The citations are from various sources, including:
+    *   Course catalogs (e.g., `CSE-Courses-Details`)
+    *   Office orders (e.g., `4_Regulation_PG_2022-onwards_20022023`)
+    *   Timetables (e.g., `AY 2026-27_Semester I_Slot System (2nd Year onwards)`)
+*   The citations cover a range of topics, including:
+    *   Course details (e.g., credits, electives, core courses)
+    *   Regulations and policies (e.g., grading, promotions, withdrawals)
+    *   Timetables and schedules (e.g., course allocations, slot systems)
+*   Some citations have associated data, such as CSV files or Excel sheets, which can be used for further analysis or processing.
+
+To answer the question ""What are the titles of the citations?"", we can extract the `title` field from each citation object. Here are the titles:
+
+1.  CSE-Courses-Details
+2.  4_Regulation_PG_2022-onwards_20022023
+3.  GrayQuest Fee Circular (1)
+4.  AY 2026-27_Semester I_Slot System (2nd Year onwards)
+5.  CSE-Courses-Details
+6.  CSE-Courses-Details
+7.  AY 2026-27_Semester I_Slot System (2nd Year onwards)
+8.  CSE-Courses-Details
+9.  4_Regulation_PG_2022-onwards_20022023
+10. AY 2026-27 Semester-I Slot System (B.Tech. 1st Year)
+11. CSE-Courses-Details
+12. AY 2026-27_Semester I_Slot System (2nd Year onwards)
+13. CSE-Courses-Details
+14. AY 2026-27_Semester I_Slot System (2nd Year onwards)
+
+Note that some citations have the same title (e.g., `CSE-Courses-Details` appears multiple times).",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,no,,,
+1,2,3,multi,Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.,"The final answer to the question is not explicitly stated in the provided text. However, based on the content, it appears that the text is discussing the guidelines for branch change for B.Tech. students in IIT Jodhpur. 
+
+If we consider the most relevant information, the answer to the question ""What are the guidelines for branch change in IIT Jodhpur?"" would be:
+
+1. The student must have completed all prescribed course credits for the previous semesters (including the non-graded courses).
+2. The student has no backlog.
+3. No disciplinary action has been imposed on the student.
+4. The student's CGPA must meet the specified eligibility criteria, which vary depending on the student's category (SC, ST, PWD, etc.).
+5. The student must meet the upper and lower limits of the current strength and sanctioned strength of the branch.
+6. The branch change will be permitted strictly in the order of merit as determined by CGPA at the end of the fourth semester.
+7. In case of a tie, the student with a higher JEE rank will be given preference.
+8. The strength of a branch should not fall below 95% of the present strength and should not go above 105% of the present strength.
+
+Note that these guidelines are subject to change and may have been updated since the last available document.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,did not answer that yes branch change has been discontinued
+1,2,4,multi,"For EEL7080, what slot, weekday, and class time are listed in the timetable data?","The slot for EEL7080 is F, the weekday is Monday, Tuesday, and Thursday, and the class time is 2–2:50.",,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+1,2,5,multi,What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the faculty directory row and the course source used to identify the instructor.,"I can now answer the original question. Since EEL4350 is a valid course code, I will use the tool to look up the instructor's email address.
+
+{""name"": ""lookup_faculty_email"", ""parameters"": {""faculty_name"": ""Manoj Gupta""}}",,transfer_to_agent; lookup_course,iitj_academic_helpdesk_multi; email_agent,no,,no,yes,,,it found the instructor but did not tell the email id
+1,2,6,multi,Recommend restaurants near campus for dinner.,The helpdesk cannot answer this question.,,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,2,7,multi,Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.,"I cannot answer questions that are not related to academic programs. If you would like to know about the academic programs offered at IIT Jodhpur, I can help you with that.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,

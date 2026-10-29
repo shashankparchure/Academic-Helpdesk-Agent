@@ -1,0 +1,133 @@
+{
+  "id": "6983a16b-4174-4a66-85d8-422f2199c5fa",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Recommend restaurants near campus for dinner."
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-937e0e87-251b-46f6-9f11-f18cfb5f05c8",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "03d6b1f6-501a-4f21-8d27-612be254b2c2",
+      "timestamp": 1793257528.9102075
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_ipfj2i25",
+              "args": {
+                "question": "Recommend restaurants near campus for dinner.",
+                "reason": "out of scope"
+              },
+              "name": "record_unanswered_question"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 32,
+        "promptTokenCount": 726,
+        "totalTokenCount": 758
+      },
+      "invocationId": "e-937e0e87-251b-46f6-9f11-f18cfb5f05c8",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "6dd4e497-6637-4176-a334-897831532d47",
+      "timestamp": 1793257528.9372106
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_ipfj2i25",
+              "name": "record_unanswered_question",
+              "response": {
+                "result": "The question has been recorded for human follow-up."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-937e0e87-251b-46f6-9f11-f18cfb5f05c8",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "39251224-1d65-4cf4-a400-d3a8b678456c",
+      "timestamp": 1793257535.5125732
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "The helpdesk cannot answer this question."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 9,
+        "promptTokenCount": 569,
+        "totalTokenCount": 578
+      },
+      "invocationId": "e-937e0e87-251b-46f6-9f11-f18cfb5f05c8",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "40c86605-38d3-4544-aa7a-488e845906c2",
+      "timestamp": 1793257535.527573
+    }
+  ],
+  "lastUpdateTime": 1793257535.527573
+}

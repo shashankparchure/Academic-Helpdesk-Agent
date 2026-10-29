@@ -15,6 +15,30 @@
     {
       "set": 2,
       "prompts": [
+        "What rules apply to the Minor Examination in Semester I of Academic Year 2026-27?",
+        "What courses or credit requirements are listed for the Minor in Management for the B23/B24 batches?",
+        "For EEL4350, what slot, weekday, and class time are listed in the timetable data?",
+        "How many 400-level electives have been floated by the Humanities department this semester? Cite the source, and explain if the available course data does not identify the department, term, or elective category clearly enough to give a supported count.",
+        "What guidance does Circular 29 provide about Engineering Science programmes for B.Tech. students?",
+        "Which gaming laptop should I buy for machine learning coursework?",
+        "What will the weather be in Jodhpur tomorrow?"
+      ]
+    },
+    {
+      "set": 3,
+      "prompts": [
+        "How many level-4 courses are listed under the School of Liberal Arts (SoLA), and which are explicitly identified as electives? Cite the workbook sheet and rows, and state any category or term information the source does not provide.",
+        "How should students complete pre-registration for Semester I of Academic Year 2026-27?",
+        "For LAL4070 Health Economics, what day, time, and classroom are listed in the allocation data?",
+        "What options or rules for undergraduate specializations and minors are described in the UG Specialization and Minors circular dated 27 March 2023?",
+        "Draft an email to the instructor of EEL4330 requesting two days of sick leave. Include the contact source and citation, and do not send the email.",
+        "Who will win the next IPL season?",
+        "Suggest a good recipe for dal to cook tonight."
+      ]
+    },
+    {
+      "set": 4,
+      "prompts": [
         "According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?",
         "What change is described in the 28 Credit Revision dated 11 January 2024?",
         "Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.",

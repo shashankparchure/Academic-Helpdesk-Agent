@@ -1,0 +1,77 @@
+﻿run,set,question,agent,prompt,final_answer,cited_doc_ids,tools_called,agents_involved,logged_for_followup,error,answer_correct,citation_correct,refusal_correct,unsupported_claims,notes
+1,1,1,multi,What attendance requirement must a student meet to sit in the Major examination?,"The available academic sources do not specify attendance requirements for sitting in the Major examination. The search results include documents about minor examinations, slot systems, and pre-registration processes, but none directly address attendance criteria for Major exams. Further clarification or access to specific regulatory documents detailing attendance policies would be required to answer this query accurately. 
+
+No evidence-based answer can be provided with the current sources.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+1,1,2,multi,How many Open Elective credits are required to earn a B.Tech. degree?,"The required Open Elective credits for a B.Tech. degree at IIT Jodhpur are not explicitly stated in the retrieved academic source (DOC0008). The search result only provides metadata about a curriculum document but no excerpt containing the credit requirement. 
+
+To resolve this:
+1. Check the full document at [BTech-EE-Curriculum-Structure-638763520245662179.pdf](course_catalogs/BTech-EE-Curriculum-Structure-638763520245662179.pdf) for sections on credit distribution.
+2. If the document is specific to Electrical Engineering (EE), confirm if Open Elective requirements differ across branches.
+3. Contact the academic office for branch-agnostic credit requirements if needed.
+
+No evidence-backed answer is available in the provided sources.",DOC0008,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+1,1,3,multi,What slot is assigned to the course Autonomous Systems? Cite the course-list source.,"The course **Autonomous Systems** (code: CSL7650) is assigned to **slot E**, as per the course-list source:  
+**data/raw/timetables/Finalized courses list.xlsx#CSE rows 26** (citation ID: DOC0064).  
+
+This entry specifies the slot, department (CSE), and instructor (Gaurav Harit) for the course.",DOC0064,transfer_to_agent; lookup_course,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+1,1,4,multi,What do the current course overload guidelines say about taking credits beyond the normal load?,"The current course overload guidelines for taking credits beyond the normal load are not explicitly detailed in the provided academic sources. The search for ""course overload guidelines maximum credit load"" returned a document related to the AY 2026-27 Semester-I Slot System for B.Tech. 1st Year, which focuses on curriculum structure and slot allocations but does not address credit load policies or overload rules. 
+
+For precise guidelines, refer to official academic regulations or contact the IIT Jodhpur academic office directly. 
+
+**Source**: AY 2026-27 Semester-I Slot System (B.Tech. 1st Year), Sheet: Courses as per Curriculum.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,no,,,it should have cited academic guidelines for UG document not this slot system sheet
+1,1,5,multi,"Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the instructor and contact details from the supplied data, cite the sources, and do not send the email.","I need clarification to proceed. The email draft requires:
+1. Student name (missing)
+2. Exact dates for the two-day sick leave (missing)
+3. Confirmation that CSL7650 is the correct course code (already verified)
+4. The instructor's name from the course lookup (pending)
+
+Would you like me to:
+1. First verify the instructor details for CSL7650, then
+2. Draft the email with the requested information?",,transfer_to_agent,iitj_academic_helpdesk_multi; email_agent,no,,no,no,,,it is asking follow ups which I did answer by running it on adk myself. The it generated a correct email.
+1,1,6,multi,What dining options are available on the IIT Jodhpur campus?,"The IIT Jodhpur Academic Helpdesk does not provide information about campus dining facilities or services. Our team can assist with academic programs, course regulations, registration, examinations, or instructor contact details. For dining options, please reach out to the campus facilities department or check the official IIT Jodhpur campus website.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,1,7,multi,What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?,"The IIT Jodhpur academic helpdesk specializes in academic programs, course regulations, registration, examinations, and instructor contact information. We cannot provide travel advisories or logistical guidance for reaching the campus. For transportation options, consider using local maps, ride-hailing services, or public transport routes from Jodhpur city centre to the IIT Jodhpur campus. Let us know if you need help with academic queries!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,2,1,multi,"According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?","The BS Chemistry curriculum requirements document titled **""BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf""** was identified via the academic sources search. However, the excerpt provided does not include the actual curriculum details (pages/sheet/row fields are empty). To proceed, you would need to access the full document via the raw path: `course_catalogs/BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf` for specific program requirements (e.g., core courses, electives, lab credits, thesis, etc.). 
+
+Since the exact content is not available here, I recommend contacting the IIT Jodhpur academic office or checking the official course catalog for the most accurate and detailed information.",,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,it got the document but couldn't read it because maybe OCR was the restriction
+1,2,2,multi,What change is described in the 28 Credit Revision dated 11 January 2024?,"The 28 Credit Revision dated 11 January 2024 is referenced in the document **""28_Credit_Revision 11 Jan 2024.pdf""** (citation ID: DOC0022). However, the provided search result does not include the actual content or details of the revision. To obtain the specific changes described in this revision, you would need to access the full document via the raw path: `office_orders/28_Credit_Revision 11 Jan 2024.pdf` or contact the IIT Jodhpur academic office for clarification. 
+
+No further details are available in the current sources.",DOC0022,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+1,2,3,multi,Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.,"The **branch change policy for B.Tech. students** is addressed in **Circular 57** (dated 08 April 2025), which was approved by the Senate in its 40th Meeting (6-7 March 2025). Here's the reconciliation:
+
+### **Current Discontinuation (AY 2026-27):**
+- **Discontinued Option:** Branch change **post-second year** is explicitly discontinued for Engineering Science Students.  
+- **Rationale:** To ensure competitiveness and equitable student strength across branches.  
+- **Eligibility Criteria:**  
+  - CGPA ≥ 8.5 (for any branch).  
+  - CGPA ≥ 7.5 (for SC/ST/PWD).  
+  - No backlog, no disciplinary action, and completion of prescribed course credits.  
+
+### **Older Guidance (Pre-2025 Revisions):**
+- The search results only include the **revised 2025 circular**, with no older documents cited. Prior guidelines (e.g., pre-2025) are not available in the provided sources.  
+
+### **Conclusion:**
+The branch change post-second year is **discontinued** for AY 2026-27 under the current policy. Older guidance is not accessible in the cited sources.  
+
+**Cite:**  
+- **Circular 57** (DOC0030), excerpted above.  
+- No older documents found in the search.",DOC0030,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+1,2,4,multi,"For EEL7080, what slot, weekday, and class time are listed in the timetable data?","The timetable data for **EEL7080** lists the following:
+
+- **Slot**: F  
+- **Days/Time**:  
+  - Monday 2–2:50  
+  - Tuesday 2–2:50  
+  - Thursday 2–2:50  
+
+This information is sourced from the IIT Jodhpur timetable spreadsheet (citation ID: DOC0063). Let me know if you need further details!",DOC0063,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+1,2,5,multi,What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the faculty directory row and the course source used to identify the instructor.,"The instructor for **EEL4350** is **Manoj Gupta**.  
+
+- **Primary email**: `manojgupta@iitj.ac.in`  
+- **Alternate email**: Not listed in the directory.  
+
+**Faculty directory source**: `data/raw/iitj_faculty.csv` (row 183).  
+**Course source**: `data/raw/timetables/Finalized courses list.xlsx#EE rows 29` (citation ID: DOC0064).  
+
+Let me know if you need further details!",DOC0064,transfer_to_agent; lookup_course; lookup_faculty_email,iitj_academic_helpdesk_multi; email_agent,no,,yes,yes,,,
+1,2,6,multi,Recommend restaurants near campus for dinner.,"The IIT Jodhpur Academic Helpdesk is designed to assist with academic inquiries related to programs, courses, registration, examinations, and faculty contact information. We cannot provide recommendations for non-academic services like restaurants. For such requests, you may need to consult campus directories, student forums, or local listings.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+1,2,7,multi,Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, course regulations, registration, examinations, and related queries. We cannot assist with travel planning or sightseeing recommendations. Please ask about academic policies, course schedules, or instructor contact details, and we’ll be happy to help!",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,

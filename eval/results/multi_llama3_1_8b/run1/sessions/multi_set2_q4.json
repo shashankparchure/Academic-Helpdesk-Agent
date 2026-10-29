@@ -1,0 +1,201 @@
+{
+  "id": "a97f217b-31f1-4024-a34b-eee518525b3c",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "For EEL7080, what slot, weekday, and class time are listed in the timetable data?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "1b8ae04c-0f6b-467f-9c43-7a3c7d69eb5c",
+      "timestamp": 1793257502.6923566
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_gy8rblut",
+              "args": {
+                "agent_name": "schedule_agent"
+              },
+              "name": "transfer_to_agent"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 20,
+        "promptTokenCount": 740,
+        "totalTokenCount": 760
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "f019ec67-bd3f-4aed-a43c-9fd1e9ecb554",
+      "timestamp": 1793257502.7213564
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_gy8rblut",
+              "name": "transfer_to_agent",
+              "response": {
+                "result": null
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "transferToAgent": "schedule_agent",
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "7ac04b98-0713-4c0f-9f87-23e2b3020934",
+      "timestamp": 1793257508.3119342
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_1ebhv0xw",
+              "args": {
+                "course_code": "EEL7080"
+              },
+              "name": "lookup_course_schedule"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 22,
+        "promptTokenCount": 1201,
+        "totalTokenCount": 1223
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "longRunningToolIds": [],
+      "id": "7108ae6a-a295-45ef-a1ad-3a9c5da47860",
+      "timestamp": 1793257508.330934
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_1ebhv0xw",
+              "name": "lookup_course_schedule",
+              "response": {
+                "result": "EEL7080 | Introduction to Cyber Physical Systems | slot F | day/time: Mon 2–2:50, Tue 2–2:50, Thu 2–2:50 | instructor: Niladri Sekhar Tripathy | room: LHC 304 | source: data/raw/timetables/AY 2026-27_Semester I_Slot System (2nd Year onwards).xlsx#Classroom Allocation row 199 | citation ID: DOC0063"
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "id": "0174ab5c-15ac-454a-9c1f-ff851d3bd9a7",
+      "timestamp": 1793257511.944748
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "The slot for EEL7080 is F, the weekday is Monday, Tuesday, and Thursday, and the class time is 2–2:50."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 33,
+        "promptTokenCount": 856,
+        "totalTokenCount": 889
+      },
+      "invocationId": "e-c1158ba5-eded-4294-af5a-e4e9e0026957",
+      "author": "schedule_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/schedule_agent@1"
+      },
+      "id": "3608a36b-e77a-4f70-98ea-6a9fdfc0bcb1",
+      "timestamp": 1793257511.9637477
+    }
+  ],
+  "lastUpdateTime": 1793257511.9637477
+}

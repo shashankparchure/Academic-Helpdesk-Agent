@@ -1,0 +1,133 @@
+{
+  "id": "ae751a47-2dfc-4828-be96-7a88429eb9d0",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "What dining options are available on the IIT Jodhpur campus?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-3c1bc3ca-a928-403e-92aa-abcbcb27d89f",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "f0ff936b-feac-4a5d-8d45-ba0d0929e53d",
+      "timestamp": 1793257262.7387402
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_8fxmy8ww",
+              "args": {
+                "question": "What dining options are available on the IIT Jodhpur campus?",
+                "reason": "out of scope"
+              },
+              "name": "record_unanswered_question"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 40,
+        "promptTokenCount": 734,
+        "totalTokenCount": 774
+      },
+      "invocationId": "e-3c1bc3ca-a928-403e-92aa-abcbcb27d89f",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "1cd0bb32-b3c8-4b99-95fe-d52659c805c6",
+      "timestamp": 1793257262.7607388
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_8fxmy8ww",
+              "name": "record_unanswered_question",
+              "response": {
+                "result": "The question has been recorded for human follow-up."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-3c1bc3ca-a928-403e-92aa-abcbcb27d89f",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "96c4c66c-5028-4963-869b-e63965e0c443",
+      "timestamp": 1793257269.9986112
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "The helpdesk cannot answer this question."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 9,
+        "promptTokenCount": 586,
+        "totalTokenCount": 595
+      },
+      "invocationId": "e-3c1bc3ca-a928-403e-92aa-abcbcb27d89f",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "83d4035f-d11b-4ace-9f75-8707a709b284",
+      "timestamp": 1793257270.0146086
+    }
+  ],
+  "lastUpdateTime": 1793257270.0146086
+}

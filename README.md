@@ -2,7 +2,7 @@
 
 A local academic helpdesk prototype for IIT Jodhpur. It uses Google ADK, an Ollama-hosted language model, ChromaDB, and source documents prepared by the user to answer academic questions with citations, look up timetable/course data, find verified instructor contacts, and draft (but never send) emails.
 
-This repository contains both a **single-agent baseline** and a separate **multi-agent version** for comparison. The evaluation prompt set and findings report are still future work.
+This repository contains both a **single-agent baseline** and a separate **multi-agent version** for comparison. Evaluation prompts and an interim performance analysis are present; the final findings report is still future work.
 
 ## Current capabilities
 
@@ -66,7 +66,7 @@ set OLLAMA_API_BASE=http://localhost:11434
 python scripts\build_vector_index.py
 ```
 
-The script rebuilds the Chroma collection at `data\vector_store\chroma` each time. Its completion output includes the number of indexed chunks. The script accepts 20 to 75 selected sources.
+The script rebuilds the Chroma collection at `data\vector_store\chroma` each time. It indexes every source marked `include_in_rag=yes` whose processing status is `processed` or `processed_ocr_text`; there is no fixed document-count limit. OCR text is indexed from the PDF's source-register entry, while sidecar, duplicate, excluded, and unprocessed rows are skipped. Its completion output includes the number of indexed chunks.
 
 ## Run the ADK agent
 
@@ -101,6 +101,24 @@ adk web --port 8001 academic_helpdesk_multi
 
 Open <http://localhost:8000> for the single-agent baseline and <http://localhost:8001> for the multi-agent version. Keep both server terminals open. ADK's web command accepts an agent directory and a configurable port; these commands point each server at one app so the comparisons remain separate.
 
+To override the chat model for the **multi-agent version only**, stop its existing server and run this from the repository root in the activated environment:
+
+```bat
+python scripts\run_multi_agent.py --model llama3.1:8b --port 8001
+```
+
+The default remains `qwen3:8b`. The single-agent app continues to use `HELPDESK_CHAT_MODEL` (default `qwen3:8b`); the multi-agent launcher sets `HELPDESK_MULTI_CHAT_MODEL` only for its process. Pull the selected Ollama model first if it is not already installed.
+
+## Regenerate report figures
+
+With the project environment activated, run this from the repository root:
+
+```bat
+python scripts\generate_report_figures.py
+```
+
+The standard-library script reads the evaluation summary CSV files and refreshes `reports\performance_figures.tex` and `reports\metric_data.csv`. The report includes the TeX charts with `\input{performance_figures.tex}`.
+
 ## Project layout
 
 ```text
@@ -113,8 +131,8 @@ Academic-Helpdesk-Agent/
 |   |-- vector_store/chroma/      # Persistent local Chroma index
 |   |-- logs/                     # Unanswered question log
 |-- docs/                         # Project documentation
-|-- eval/                         # Evaluation prompts and results (planned)
-|-- reports/                      # Assignment findings report (planned)
+|-- eval/                         # Prompts, response exports, and analysis
+|-- reports/                      # LaTeX report, figures, and ADK screenshots
 |-- scripts/                      # Data processing and indexing scripts
 |-- src/academic_helpdesk/        # Single-agent baseline and shared tools
 |-- src/academic_helpdesk_multi/  # Orchestrator and specialist agents
@@ -126,4 +144,4 @@ The `.gitignore` excludes local raw/processed documents, generated metadata, vec
 
 ## Assignment status
 
-The single-agent baseline, multi-agent implementation, and 28 evaluation prompts are present. The findings report remains to be completed; it should cover accuracy, citation groundedness, out-of-scope refusals, and answer changes across repeated runs. See [`eval/evaluation_prompts.txt`](eval/evaluation_prompts.txt) for the prompt assignments and [`docs/rag_pipeline_analysis.md`](docs/rag_pipeline_analysis.md) for retrieval alternatives and robustness recommendations.
+The single-agent baseline, multi-agent implementation, 28 evaluation prompts, interim response analysis, and LaTeX report source are present. The report covers answer accuracy, citation correctness, out-of-scope refusals, follow-up logging, model comparison, and substantial answer changes across repeated runs. See [`eval/evaluation_prompts.txt`](eval/evaluation_prompts.txt), [`eval/performance_analysis.md`](eval/performance_analysis.md), [`reports/report.tex`](reports/report.tex), and [`docs/rag_pipeline_analysis.md`](docs/rag_pipeline_analysis.md).

@@ -112,11 +112,10 @@ def collect_documents() -> tuple[list[str], list[str], list[dict[str, Any]]]:
         and row.get("processing_status") in {"processed", "processed_ocr_text"}
     }
     selected_sources.discard("")
-    if not 20 <= len(selected_sources) <= 75:
+    if not selected_sources:
         raise SystemExit(
-            f"Select 20–30 source documents in {REGISTER_PATH.name} by setting include_in_rag=yes "
-            f"for those rows and no for the rest. Current selection: {len(selected_sources)}. "
-            "Keep OCR sidecar rows set to no; select their PDF row."
+            f"No eligible sources are selected in {REGISTER_PATH.name}. "
+            "Set include_in_rag=yes for processed source documents."
         )
     documents: list[str] = []
     ids: list[str] = []
@@ -131,7 +130,10 @@ def collect_documents() -> tuple[list[str], list[str], list[dict[str, Any]]]:
     }
 
     for row in register:
-        if row.get("include_in_rag", "").casefold() != "yes":
+        if (
+            row.get("include_in_rag", "").casefold() != "yes"
+            or row.get("processing_status") not in {"processed", "processed_ocr_text"}
+        ):
             continue
         processed_path = row.get("processed_path", "")
         if not processed_path:
@@ -152,7 +154,11 @@ def collect_documents() -> tuple[list[str], list[str], list[dict[str, Any]]]:
     for filename in NORMALIZED_TABLES:
         for row in read_csv(NORMALIZED_ROOT / filename):
             source = source_by_raw.get(normalized_source_key(row.get("source_file", "")))
-            if not source or source.get("include_in_rag", "").casefold() != "yes":
+            if (
+                not source
+                or source.get("include_in_rag", "").casefold() != "yes"
+                or source.get("processing_status") not in {"processed", "processed_ocr_text"}
+            ):
                 continue
             keys = [key for key in row if key not in {"source_file"} and row.get(key)]
             text = " | ".join(f"{key.replace('_', ' ')}: {row[key]}" for key in keys)

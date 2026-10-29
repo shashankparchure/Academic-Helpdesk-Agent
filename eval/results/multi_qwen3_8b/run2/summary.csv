@@ -1,0 +1,119 @@
+﻿run,set,question,agent,prompt,final_answer,cited_doc_ids,tools_called,agents_involved,logged_for_followup,error,answer_correct,citation_correct,refusal_correct,unsupported_claims,notes
+2,1,1,multi,What attendance requirement must a student meet to sit in the Major examination?,"The available academic sources do not specify attendance requirements for the Major examination. The search result references guidelines for the Minor Examination, not the Major examination. No explicit criteria for attendance to sit in the Major examination are provided in the cited document or other accessible sources. Students should consult their course syllabus or the academic office for program-specific rules. 
+
+**Citation**: ""Indian Institute of Technology Jodhpur Mail - Guidelines for the Minor Examination Semester I of Academic Year 2026-27"" (DOC0040).",DOC0040,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,no,,,"it should have said that minimum 75% is required, it refers to guidelines for minor examinations whereas the attendance criteria for major exam is mentioned in a circular"
+2,1,2,multi,How many Open Elective credits are required to earn a B.Tech. degree?,"The **B.Tech. program at IIT Jodhpur requires 10 credits for Open Electives (OE)** as part of the graded curriculum. This is explicitly stated in the curriculum structure document **""8. B.Tech CI_09102020"" (DOC0005)**, where Open Electives (OE) are listed under the graded section with a credit allocation of **10 credits**. 
+
+### Key Points:
+- **Open Electives (OE):** 10 credits (graded).
+- **Non-graded Open Electives (MO):** 6 credits (as noted in DOC0027, but this may pertain to specific categories or exceptions).
+- **Total Graded Credits:** 150 (includes OE as 10 credits).
+- **Total Graded + Non-Graded Credits:** 165 (includes additional non-graded components like Humanities or Design/Practical Experience).
+
+### Conclusion:
+The standard **required Open Elective credits for B.Tech. at IIT Jodhpur are 10 credits** (graded). If you're enrolled in a dual-degree or specialized program, additional requirements (e.g., 6 non-graded credits) may apply, but the base requirement is **10 credits**. Always verify with your departmental timetable committee for program-specific details.",DOC0005; DOC0027,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,first time in 4 funs bang on correct answer
+2,1,3,multi,What slot is assigned to the course Autonomous Systems? Cite the course-list source.,"The course **Autonomous Systems** (code: CSL7650) is assigned to **slot E**.  
+
+**Source citation**:  
+[data/raw/timetables/Finalized courses list.xlsx#CSE rows 26](https://example.com/citation/DOC0064) (citation ID: DOC0064).  
+
+This information is directly extracted from the course-list source provided in the workbook.",DOC0064,transfer_to_agent; lookup_course,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,1,4,multi,What do the current course overload guidelines say about taking credits beyond the normal load?,"The current course overload guidelines are documented in the **Course Overload Guidelines.pdf** file (citation ID: DOC0036). However, the content of this document is not accessible through the provided sources. For detailed policies on exceeding the normal credit load, you would need to consult the official document directly via the path `office_orders/Course Overload Guidelines.pdf` or contact the IIT Jodhpur academic office for clarification. 
+
+No further action is required here, as the sources do not contain the specific text of the guidelines.",DOC0036,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,yes,,,
+2,1,5,multi,"Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the instructor and contact details from the supplied data, cite the sources, and do not send the email.","Here is your draft email to the instructor of **CSL7650 | Autonomous Systems (AI+X)**:
+
+---
+
+**To**: gharit@iitj.ac.in  
+**Subject**: Request regarding CSL7650 - Autonomous Systems (AI+X)  
+
+Dear Gaurav Harit,  
+
+I am writing to request sick leave for two days for **CSL7650 (Autonomous Systems (AI+X))**. Please let me know if any additional information or documentation is required.  
+
+Thank you for your consideration.  
+
+[Student Name]  
+
+---
+
+**Instructor contact source**:  
+- **Gaurav Harit** (Professor, CSE)  
+- **Primary email**: gharit@iitj.ac.in  
+- **Alternate email**: head_cse@iitj.ac.in  
+- **Source**: data/raw/iitj_faculty.csv (row 117)  
+
+This is a draft only; it has not been sent.  
+
+---  
+
+Let me know if you'd like to adjust the message or add specific dates for the sick leave.",,transfer_to_agent; lookup_course; lookup_faculty_email; draft_instructor_email,iitj_academic_helpdesk_multi; email_agent,no,,yes,yes,,,
+2,1,6,multi,What dining options are available on the IIT Jodhpur campus?,"The IIT Jodhpur Academic Helpdesk currently does not provide information about campus dining facilities or services. Our team can assist with academic programs, course regulations, registration, examinations, or instructor contact details. For dining options, please reach out to the campus facilities department or check the official IIT Jodhpur campus website.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,1,7,multi,What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?,"The IIT Jodhpur academic helpdesk specializes in academic programs, courses, regulations, timetables, and instructor contact information. We cannot provide travel/transportation guidance, as this falls outside our scope of support. For route recommendations, please consult local maps, transportation services, or the IIT Jodhpur campus administration.",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,2,1,multi,"According to the BS Chemistry curriculum document, what programme requirements should a student complete to graduate?","The BS Chemistry curriculum requirements at IIT Jodhpur are detailed in the document **""BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf""** (citation ID: DOC0007). Based on the excerpt from **Page 15** of this document, the program includes:
+
+1. **Core Courses**:  
+   - Chemistry (e.g., *PC Basic Organic Chemistry*, *PC Chemistry of Elements*)  
+   - Physics (e.g., *IS Physics*, *PC dd Fundamental Inorganic Chemistry*)  
+   - Mathematics (e.g., *IS Mathematics I*, *IS Mathematics II*)  
+   - Engineering fundamentals (e.g., *IE Introduction to Electrical Engineering*, *IE Engineering Mechanics*)  
+   - Laboratory work (e.g., *IS Chemistry Lab*, *PC Organic Chemistry Lab 1*)  
+
+2. **Semester Structure**:  
+   - Divided into I–IV semesters with specific course distributions (e.g., 12-1-14 LTP credits in Semester I, 11-2-12 in Semester II).  
+
+3. **Electives and Specialization**:  
+   - Includes specialized courses like *IE Introduction to Machine Learning*, *PL Scientific Computation*, and *PL Modelling and Simulation*.  
+
+4. **Additional Requirements**:  
+   - Communication skills (*NH Communication Skill I/II*), social responsibility (*NH Social Connect and responsibilities I/II*), and performing arts/sports (*NH Performing Arts I/II*).  
+
+For **graduation criteria**, the document likely specifies minimum credit hours (e.g., 27 credits in Semester I, 25 in Semester II) and overall program completion. However, the full document (Page 15 excerpt) does not explicitly state graduation requirements like GPA thresholds or thesis/project work.  
+
+**Next Steps**:  
+- Refer to the full document **""BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf""** for precise credit hour totals, elective rules, and graduation conditions.  
+- Contact the IIT Jodhpur academic office for confirmation of exact requirements.  
+
+Source: [BS-Chemistry curriculam_document-2025-03-21-15-18-pm.pdf](https://course_catalogs/BS-Chemistry%20curriculam_document-2025-03-21-15-18-pm.pdf) (Page 15 excerpt).",DOC0007,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,2,2,multi,What change is described in the 28 Credit Revision dated 11 January 2024?,"The **28 Credit Revision dated 11 January 2024** describes the following change:  
+**Credit requirements for Minor/Specialization programs were reduced from 20 credits to 15 credits**. This includes:  
+- **8 credits** for specialization compulsory courses  
+- **7 credits** for specialization elective courses  
+
+This revision was approved by the ECS (Executive Council) in its 29th meeting on 17 and 25 August 2023 (resolution number 29.13).  
+
+**Source**:  
+- **Citation ID**: DOC0022  
+- **Document**: *28_Credit_Revision 11 Jan 2024.pdf* (OCR text excerpt provided)  
+
+No further details about specific courses or implementation timelines are included in the excerpt.",DOC0022,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,yes,yes,,,
+2,2,3,multi,Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant.,"The search for academic sources related to B.Tech. branch change discontinuation for AY 2026-27 returned timetabling documents (citation IDs DOC0062) detailing slot systems and batchwise schedules. These documents **do not mention branch change policies** or discontinuation guidance. 
+
+Since no relevant sources were found to address the discontinuation of branch changes or reconcile it with older guidelines, the answer cannot be determined from the provided evidence. For the most accurate information, consult the official IIT Jodhpur academic circulars or contact the academic office directly. 
+
+No conflicting or reconciling documents were identified in the search results.",DOC0062,transfer_to_agent; search_academic_sources,iitj_academic_helpdesk_multi; policy_agent,no,,no,no,,,some runs could asnwer that branch change was discontinued but this one failed
+2,2,4,multi,"For EEL7080, what slot, weekday, and class time are listed in the timetable data?","The course **EEL7080** has the following schedule details from the timetable data:
+
+- **Slot**: F  
+- **Weekdays**: Monday, Tuesday, Thursday  
+- **Class Time**: 2–2:50 (each day)  
+
+This information is sourced from the IIT Jodhpur timetable file for the AY 2026-27 Semester I, specifically the ""Classroom Allocation"" row 199 in the Slot System spreadsheet (citation ID: DOC0063).",DOC0063,transfer_to_agent; lookup_course_schedule,iitj_academic_helpdesk_multi; schedule_agent,no,,yes,yes,,,
+2,2,5,multi,What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the faculty directory row and the course source used to identify the instructor.,"The instructor for **EEL4350** is **Manoj Gupta**.  
+
+**Primary Email:**  
+`manojgupta@iitj.ac.in`  
+
+**Alternate Emails:**  
+Not listed in the faculty directory.  
+
+**Faculty Directory Citation:**  
+`data/raw/iitj_faculty.csv row 183`  
+
+**Course Source Citation:**  
+`data/raw/timetables/Finalized courses list.xlsx#EE rows 29`  
+
+Let me know if you need further details!",,transfer_to_agent; lookup_course; lookup_faculty_email,iitj_academic_helpdesk_multi; email_agent,no,,yes,yes,,,
+2,2,6,multi,Recommend restaurants near campus for dinner.,The IIT Jodhpur Academic Helpdesk cannot assist with non-academic inquiries like restaurant recommendations. This request has been recorded for human follow-up.,,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,
+2,2,7,multi,Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.,"The IIT Jodhpur Academic Helpdesk specializes in academic programs, course regulations, registration, examinations, and related queries. We cannot assist with travel planning or sightseeing recommendations. For trip planning, consider consulting a travel guide, local tourism office, or a travel agency for detailed itineraries and logistics. Safe travels! 🚗",,record_unanswered_question,iitj_academic_helpdesk_multi,yes,,,,yes,,

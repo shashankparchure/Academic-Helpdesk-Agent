@@ -1,0 +1,202 @@
+{
+  "id": "54d71d7c-30fc-4cfc-ab4b-aad8e91eba01",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the current discontinuation circular with any older branch-change guidance and cite both if relevant."
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "6ddf060b-3a6c-49e4-bc97-4c48b45e9eba",
+      "timestamp": 1793257896.172949
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_x8jfer5n",
+              "args": {
+                "agent_name": "policy_agent"
+              },
+              "name": "transfer_to_agent"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 20,
+        "promptTokenCount": 757,
+        "totalTokenCount": 777
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "53599d22-9a27-4659-9114-f3188e752ee1",
+      "timestamp": 1793257896.2019656
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_x8jfer5n",
+              "name": "transfer_to_agent",
+              "response": {
+                "result": null
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "transferToAgent": "policy_agent",
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "0a527b95-0f50-48d5-9ffc-d4d228b8da3f",
+      "timestamp": 1793257900.9468975
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_4m90mxhf",
+              "args": {
+                "limit": "5",
+                "query": "B.Tech. branch change discontinued Academic Year 2026-27"
+              },
+              "name": "search_academic_sources"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 38,
+        "promptTokenCount": 1061,
+        "totalTokenCount": 1099
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "policy_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/policy_agent@1"
+      },
+      "longRunningToolIds": [],
+      "id": "b581598d-2905-41ac-9917-064a309e60bd",
+      "timestamp": 1793257900.9658978
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_4m90mxhf",
+              "name": "search_academic_sources",
+              "response": {
+                "result": "[\n  {\n    \"citation_id\": \"DOC0030\",\n    \"title\": \"Circular 57 Revised guidelines for Branch-Change of B.Tech. students\",\n    \"raw_path\": \"office_orders/Circular 57 Revised guidelines for Branch-Change of B.Tech. students.txt\",\n    \"page\": \"\",\n    \"sheet\": \"\",\n    \"source_row\": \"\",\n    \"excerpt\": \"# Source: Circular 57 Revised guidelines for Branch-Change of B.Tech. students.pdf\\n\\nRaw path: office_orders/Circular 57 Revised guidelines for Branch-Change of B.Tech. students.pdf\\n\\nOCR text source: Circular 57 Revised guidelines for Branch-Change of B.Tech. students.txt\"\n  },\n  {\n    \"citation_id\": \"DOC0030\",\n    \"title\": \"Circular 57 Revised guidelines for Branch-Change of B.Tech. students\",\n    \"raw_path\": \"office_orders/Circular 57 Revised guidelines for Branch-Change of B.Tech. students.txt\",\n    \"page\": \"\",\n    \"sheet\": \"\",\n    \"source_row\": \"\",\n    \"excerpt\": \"f branch change be allowed post second\\nyear. Accordingly, the branch change option available to Engineering Science Students\\npost their second year is discontinued.\\nThe revised norms for the branch change will be applicable to UG students\\nadmitted from academic year 2025-26 onwards\\nurimg 18\\n(Ravi Jingar)\\nCopy to- for kind information\\n1. Dean of Academic Affairs (DOAA)\\n2. Chairperson SUGC\\n3. Chairman, JEE\\n4. Head of Depts. /Centres/Schools/Division\\n5. All Faculty Members\\nAssistant Registrar (Academic Affairs)\\n6. All Students\\n7. Office of Academic Affairs\\n8. Webmaster for uploading in the INTRANET of the Institute website\"\n  },\n  {\n    \"citation_id\": \"DOC0031\",\n    \"title\": \"Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs\",\n    \"raw_path\": \"office_orders/Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs.txt\",\n    \"page\": \"\",\n    \"sheet\": \"\",\n    \"source_row\": \"\",\n    \"excerpt\": \"# Source: Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs.pdf\\n\\nRaw path: office_orders/Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs.pdf\\n\\nOCR text source: Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs.txt\\n\\nजायपुर जोधप\\npur भारतीय प्रौद्योगिकी संस्थान Indian\\nnatitute of Tarhnolog\\nनमोविज्ञान\\nभारतीय प्रौद्योगिकी संस्थान जोधपुर\\nकार्यालय शैक्षणिक मामले\\nराष्ट्रीय राजमार्ग – ६२, नागौर रोड, करवड, जोधपुर\\nराजस्थान - 342 030\\nईमेल: office_academics_pg@iitj.ac.in\\nदूरभाष संख्या: 02912801131/32/33/34/35/37/38\\nवेबसाइट: https://www.itj.ac.in/\\nIndian Institute of Technology Jodhpur\\nOffice of Academic Affairs\\nNH-62, Nagaur Road, Karwar, Jodhpur\\nRajasthan - 342 030\\neMail: office_academics_pg@iitj.ac.in\\nPhone Number: 02912801131/32/33/34/35/37/38\\nWebsite: https://www.iitj.ac.in/\\nNo.IITJ/DoAA/2025-26163/2271 Dated: /12/2025\\nCIRCULAR\\nSubject: Discontinuation of Branch Change from Academic Year 2026–27 in UG\\nPrograms.\\nThe Senate, in its 43rd Meeting held on 27-28 October 2025, approved the\\nproposal to discontinue the provision of branch change in UG Programs at IIT Jodhpur\\nfrom the new admissions starting Academic Year 2026-27 onwards.\\nAccordingly, all students admitted in 2026 and thereafter shall continue in their\\noriginal allotted branches during admission at IIT Jodhpur and will not be able to change\\ntheir JoSAA-allocated branch.\\nanne\\n(Gaurav Nigam)\\nAssistant Registrar (Academic Affairs)\\nCopy to :- for kind information\\n1. Dean of Academic Affairs (DOAA)\\n2. Chairperson SUGC\\n3. Chairman, JEE\\n4. Heads of Depts./ Centres/ Schools/ Division\\n5. All Faculty Members\\n6. All Students\\n7.\\n8.\\nOffice of Academic Affairs\\nWebmaster for uploading in the institute website.\"\n  },\n  {\n    \"citation_id\": \"DOC0034\",\n    \"title\": \"Circular_24_Branch Change criteria for B.Tech. i n X + Engineering Science post\",\n    \"raw_path\": \"office_orders/Circular_24_Branch Change criteria for B.Tech. i n X + Engineering Science post.pdf\",\n    \"page\": \"1\",\n    \"sheet\": \"\",\n    \"source_row\": \"\",\n    \"excerpt\": \"Subject:   Branch   Change   criteria   for   B.Tech.   in   X   +   Engineering   Science   post     \\n                    2nd   year   \\n1. An  undergraduate  student  opted  for  B.Tech.  in  X  +  Engineering  Science  post  2nd               \\nyear  is  eligible  to  apply  for  branch  change  at  the  end  of  the  fourth  semester  only,                  \\nprovided   the   student   satisfies   the   following   criteria:   \\n2. Secured   a   CGPA,   at   the   end   of   the   fourth   semester,   of:    \\na. Greater   than   or   equal   to   7.0   for   SC/ST   and   PD   applicants   \\nb. Greater   than   or   equal   to   8.0   for   other   applicants   \\n2. Completed  all  prescribed  course  credits  for  the  first  four  semesters  including  the             \\nnon-graded   courses   (exception,   X   grade   in   non-graded   courses).   \\n3. No   backlog   at   the   end   of   the   fourth   semester.   \\n4. The   student   should   have   no   disciplinary   action   against   him/her.   \\n5. Change  of  the  branch  will  be  permitted  strictly  in  the  order  of  merit  as  determined                 \\nby  CGPA  at  the  end  of  the  fourth  semester.  Each  available  seat  may  be  occupied  by                  \\nstudents  of  any  category.  For  students  of  the  SC/ST/PD  category,  concession  in              \\neligibility   criteria   is   given   as   per   rule   (a).   \\n6. In  case  more  than  one  student  applying  for  branch  change  have  the  same  CGPA,  the                 \\ntie   shall   be   resolved   on   the   basis   of   JEE   ranks   of   such   applicants.   \\n7. In  making  a  change  of  branch,  the  strength  of  a  branch  should  not  fall  below   95%                  \\nof   the   present   strength   and   should   not   go  \"\n  },\n  {\n    \"citation_id\": \"DOC0030\",\n    \"title\": \"Circular 57 Revised guidelines for Branch-Change of B.Tech. students\",\n    \"raw_path\": \"office_orders/Circular 57 Revised guidelines for Branch-Change of B.Tech. students.txt\",\n    \"page\": \"\",\n    \"sheet\": \"\",\n    \"source_row\": \"\",\n    \"excerpt\": \"थान य प्रवि न जोधपुर\\nsuruerpuj भारतीय\\nteof Technology\\nज्ञानमयोविहा\\nभारतीय प्रौद्योगिकी संस्थान जोधपुर\\nकार्यालय शैक्षणिक मामले\\nराष्ट्रीय राजमार्ग – ६२,नागौर रोड, करवड,जोधपुर\\nराजस्थान - 342 030\\nईमेल: office academics pg@iiti.ac.in\\nदूरभाष संख्या: 02912801131/32/33/34/35/37/38\\nवेबसाइट: https://www.itj.ac.in/\\nNo. IITJ/DoAA/2024-25/57/1620\\nIndian Institute of Technology Jodhpur\\nOffice of Academic Affairs\\nNH-62, Nagaur Road, Karwar, Jodhpur\\nRajasthan - 342 030\\neMail: office_academics_pg@iitj.ac.in\\nPhone Number: 02912801131/32/33/34/35/37/38\\nWebsite: https://www.iitj.ac.in/\\nDated: 08 April 2025\\nCIRCULAR\\nSubject: Revised guidelines for Branch-Change of B.Tech. students\\nThe Senate in its 40th Meeting held on 6-7th March 2025 approved guidelines for Branch-Change of B.Tech. students.\\nThe revised guidelines for the branch change criteria as given below.\\nrevised\\nE1: The student must have completed all prescribed course credits for the previous\\nsemesters (including the non-graded courses).\\nE2: The student has no backlog.\\nE3: No disciplinary Action has been imposed on the student.\\nAfter Sem Branch Enrolled Branch Applied Lower CGPA Eligibility Limit Upper Limit\\nCGPA ≥ 8.5\\nAny Any\\nOthers\\nCGPA ≥ 7.5\\n(For SC, ST,\\nE1\\nE2\\nE3\\n90% of\\ncurrent\\nStrength\\n110% of\\nSanctioned\\nStrength\\nPWD)\\nCGPA ≥ 8\\nAny ES\\nOthers\\nCGPA ≥ 7\\n(For SC, ST,\\nE1\\nE2\\nE3\\n90% of\\ncurrent\\nStrength 30\\nPWD)\\nThe Upper and Lower Limits were decided after carefully considering the need for\\ncompetitiveness and maintaining fairly equitable student strength in different branches.\\nIt was further recommended that no option of branch change be allowed post second\\nyear. Accordingly, the branch change option available to Engineering Science Students\\npost their second year is discontinued.\\nThe revised norms for the branch change will be applica\"\n  }\n]"
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "policy_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/policy_agent@1"
+      },
+      "id": "a2bf2e88-aed4-4925-99e4-01eff0047e7a",
+      "timestamp": 1793257908.1005101
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "Based on the search results, it appears that the branch change option for B.Tech. students has been discontinued from Academic Year 2026-27 onwards. This is stated in Circular-Discontinuation of Branch Change from Academic Year 202-27 in UG Programs (DOC0031), which states that \"all students admitted in 2026 and thereafter shall continue in their original allotted branches during admission at IIT Jodhpur and will not be able to change their JoSAA-allocated branch.\"\n\nAdditionally, Circular 57 Revised guidelines for Branch-Change of B.Tech. students (DOC0030) states that \"no option of branch change be allowed post second year. Accordingly, the branch change option available to Engineering Science Students post their second year is discontinued.\"\n\nTherefore, the answer to the question is that the B.Tech. branch change has been discontinued for Academic Year 2026-27."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 187,
+        "promptTokenCount": 3367,
+        "totalTokenCount": 3554
+      },
+      "invocationId": "e-3ee18dd0-4fc3-4b1b-961e-92825313ea9e",
+      "author": "policy_agent",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1/policy_agent@1"
+      },
+      "id": "60b7944b-428c-4e22-98b9-b3b5ad7bc16d",
+      "timestamp": 1793257908.1174948
+    }
+  ],
+  "lastUpdateTime": 1793257908.1174948
+}

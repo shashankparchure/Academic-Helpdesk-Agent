@@ -1,0 +1,133 @@
+{
+  "id": "f502848e-8c73-4ddf-9f25-38f8bf1f339e",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?"
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-a5e3c6ef-2967-493f-8919-a2ec87640108",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "c2fb7bb2-bff7-4b29-8781-47d357704adf",
+      "timestamp": 1793257273.5640767
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_xqw2zgpx",
+              "args": {
+                "question": "What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?",
+                "reason": "out of scope"
+              },
+              "name": "record_unanswered_question"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 49,
+        "promptTokenCount": 743,
+        "totalTokenCount": 792
+      },
+      "invocationId": "e-a5e3c6ef-2967-493f-8919-a2ec87640108",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "f9443501-7a09-4551-b14a-6798da28ea38",
+      "timestamp": 1793257273.5870795
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_xqw2zgpx",
+              "name": "record_unanswered_question",
+              "response": {
+                "result": "The question has been recorded for human follow-up."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-a5e3c6ef-2967-493f-8919-a2ec87640108",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "8f0497c5-c3ee-459a-82b6-730197a5ef69",
+      "timestamp": 1793257279.1703122
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "The helpdesk cannot answer this question."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 9,
+        "promptTokenCount": 604,
+        "totalTokenCount": 613
+      },
+      "invocationId": "e-a5e3c6ef-2967-493f-8919-a2ec87640108",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "f56b8097-aa39-49e5-b355-a9f88d3f6cf9",
+      "timestamp": 1793257279.1903138
+    }
+  ],
+  "lastUpdateTime": 1793257279.1903138
+}

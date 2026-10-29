@@ -1,0 +1,133 @@
+{
+  "id": "b10cd716-3470-4576-a0fb-5cd8632d954f",
+  "appName": "academic_helpdesk_multi",
+  "userId": "user",
+  "state": {},
+  "events": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "Plan a weekend sightseeing trip from Jodhpur to Jaisalmer."
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c1f98f3c-5452-461d-9364-6ff05df9e670",
+      "author": "user",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": ""
+      },
+      "id": "8746969c-3a3d-4448-b291-d7e5352cc86d",
+      "timestamp": 1793257537.1132352
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "functionCall": {
+              "id": "call_ek8mnmnv",
+              "args": {
+                "question": "Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.",
+                "reason": "out of scope"
+              },
+              "name": "record_unanswered_question"
+            }
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 41,
+        "promptTokenCount": 735,
+        "totalTokenCount": 776
+      },
+      "invocationId": "e-c1f98f3c-5452-461d-9364-6ff05df9e670",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "longRunningToolIds": [],
+      "id": "c2693757-4ba0-407f-8e98-dc0bb1a99d03",
+      "timestamp": 1793257537.1342304
+    },
+    {
+      "content": {
+        "parts": [
+          {
+            "functionResponse": {
+              "id": "call_ek8mnmnv",
+              "name": "record_unanswered_question",
+              "response": {
+                "result": "The question has been recorded for human follow-up."
+              }
+            }
+          }
+        ],
+        "role": "user"
+      },
+      "invocationId": "e-c1f98f3c-5452-461d-9364-6ff05df9e670",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "4536f1e0-63eb-4f6f-8a3c-bddd5165cca4",
+      "timestamp": 1793257541.8807805
+    },
+    {
+      "modelVersion": "ollama_chat/llama3.1:8b",
+      "content": {
+        "parts": [
+          {
+            "text": "I cannot answer questions that are not related to academic programs. If you would like to know about the academic programs offered at IIT Jodhpur, I can help you with that."
+          }
+        ],
+        "role": "model"
+      },
+      "partial": false,
+      "finishReason": "STOP",
+      "usageMetadata": {
+        "cachedContentTokenCount": 0,
+        "candidatesTokenCount": 39,
+        "promptTokenCount": 587,
+        "totalTokenCount": 626
+      },
+      "invocationId": "e-c1f98f3c-5452-461d-9364-6ff05df9e670",
+      "author": "iitj_academic_helpdesk_multi",
+      "actions": {
+        "stateDelta": {},
+        "artifactDelta": {},
+        "requestedAuthConfigs": {},
+        "requestedToolConfirmations": {}
+      },
+      "nodeInfo": {
+        "path": "iitj_academic_helpdesk_multi@1"
+      },
+      "id": "1730475b-e5e2-45b6-8216-2b8f1db2957e",
+      "timestamp": 1793257541.8967803
+    }
+  ],
+  "lastUpdateTime": 1793257541.8967803
+}
