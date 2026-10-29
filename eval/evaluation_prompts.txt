@@ -1,0 +1,66 @@
+IIT Jodhpur Academic Helpdesk - Evaluation Prompts
+==================================================
+
+Total: 28 prompts (20 academic, 8 out of scope)
+Division: 4 people, 7 prompts each
+
+Evaluation procedure:
+- Ask each prompt to both the single-agent and multi-agent versions.
+- Use the same prompt wording and source/index setup for both versions.
+- Record the answer, citations, whether an out-of-scope refusal was correct, and any unsupported claims.
+- Some academic prompts intentionally test ambiguity or missing evidence. A careful answer may explain
+  the limitation or ask for clarification instead of guessing.
+
+
+Soham
+--------
+1. What attendance requirement must a student meet to sit in the Major examination?
+2. How many Open Elective credits are required to earn a B.Tech. degree?
+3. What slot is assigned to the course Autonomous Systems? Cite the course-list source.
+4. What do the current course overload guidelines say about taking credits beyond the normal load?
+5. Draft an email to the instructor of CSL7650 requesting sick leave for two days. Use the
+   instructor and contact details from the supplied data, cite the sources, and do not send the email.
+6. What dining options are available on the IIT Jodhpur campus?
+7. What is the best way to travel from Jodhpur city centre to the IIT Jodhpur campus?
+
+
+Shashank
+--------
+1. What rules apply to the Minor Examination in Semester I of Academic Year 2026-27?
+2. What courses or credit requirements are listed for the Minor in Management for the B23/B24 batches?
+3. For EEL4350, what slot, weekday, and class time are listed in the timetable data?
+4. How many 400-level electives have been floated by the Humanities department this semester?
+   Cite the source, and explain if the available course data does not identify the department, term, or
+   elective category clearly enough to give a supported count.
+5. What guidance does Circular 29 provide about Engineering Science programmes for B.Tech. students?
+6. Which gaming laptop should I buy for machine learning coursework?
+7. What will the weather be in Jodhpur tomorrow?
+
+
+Saher
+--------
+1. How many level-4 courses are listed under the School of Liberal Arts (SoLA), and which are
+   explicitly identified as electives? Cite the workbook sheet and rows, and state any category or term
+   information the source does not provide.
+2. How should students complete pre-registration for Semester I of Academic Year 2026-27?
+3. For LAL4070 Health Economics, what day, time, and classroom are listed in the allocation data?
+4. What options or rules for undergraduate specializations and minors are described in the
+   UG Specialization and Minors circular dated 27 March 2023?
+5. Draft an email to the instructor of EEL4330 requesting two days of sick leave. Include the
+   contact source and citation, and do not send the email.
+6. Who will win the next IPL season?
+7. Suggest a good recipe for dal to cook tonight.
+
+
+Sarthak
+--------
+1. According to the BS Chemistry curriculum document, what programme requirements should a
+   student complete to graduate?
+2. What change is described in the 28 Credit Revision dated 11 January 2024?
+3. Has B.Tech. branch change been discontinued for Academic Year 2026-27? Reconcile the
+   current discontinuation circular with any older branch-change guidance and cite both if relevant.
+4. For EEL7080, what slot, weekday, and class time are listed in the timetable data?
+5. What primary and alternate email IDs are listed for the instructor of EEL4350? Cite the
+   faculty directory row and the course source used to identify the instructor.
+6. Recommend restaurants near campus for dinner.
+7. Plan a weekend sightseeing trip from Jodhpur to Jaisalmer.

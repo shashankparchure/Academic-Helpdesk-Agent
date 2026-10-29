@@ -117,8 +117,8 @@ Academic-Helpdesk-Agent/
 
 ## Privacy and repository contents
 
-The `.gitignore` excludes local raw/processed documents, generated metadata, vector-store files, logs, virtual environments, and secrets. Add only documents you are permitted to redistribute, and replace personal data with dummy values as the assignment allows. Keep the assignment prompt and project code in version control; add the final evaluation questions and report when they are ready.
+The `.gitignore` excludes local raw/processed documents, generated metadata, vector-store files, logs, virtual environments, and secrets. Add only documents you are permitted to redistribute, and replace personal data with dummy values as the assignment allows. Keep the assignment prompt, project code, and evaluation prompts in version control; add the findings report when it is ready.
 
 ## Assignment status
 
-The single-agent baseline and multi-agent implementation are present. The assignment also asks for a set of 20 to 30 evaluation prompts and a report covering accuracy, citation groundedness, out-of-scope refusals, and changes across repeated runs. Those deliverables should be added after implementation and evaluation. See [`docs/rag_pipeline_analysis.md`](docs/rag_pipeline_analysis.md) for retrieval alternatives and the current robustness plan.
+The single-agent baseline, multi-agent implementation, and 28 evaluation prompts are present. The findings report remains to be completed; it should cover accuracy, citation groundedness, out-of-scope refusals, and answer changes across repeated runs. See [`eval/evaluation_prompts.txt`](eval/evaluation_prompts.txt) for the prompt assignments and [`docs/rag_pipeline_analysis.md`](docs/rag_pipeline_analysis.md) for retrieval alternatives and robustness recommendations.
